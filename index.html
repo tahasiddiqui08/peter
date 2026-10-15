@@ -6,7 +6,7 @@
 <title>Australia Cares Foundation · Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0E2A47; --ink-2:#163B61; --on-ink:#FFFFFF;
@@ -18,8 +18,8 @@
   --t1:#E7EEF6;
   --shadow:0 1px 2px rgba(19,35,58,.06),0 4px 14px -6px rgba(19,35,58,.12);
   --shadow-lg:0 2px 4px rgba(19,35,58,.06),0 18px 40px -18px rgba(19,35,58,.28);
-  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+  --serif:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --display:var(--serif);
   --r:10px;
   color-scheme:light;
@@ -45,8 +45,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);fon
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
 img,svg{max-width:100%}
 a{color:inherit}
-h1,h2{font-family:var(--serif);font-weight:700;line-height:1.14;letter-spacing:-.01em;margin:0 0 .45em}
-h3,h4{font-family:var(--body);font-weight:700;line-height:1.25;margin:0 0 .4em}
+h1,h2{font-family:var(--serif);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin:0 0 .45em}
+h3,h4{font-family:var(--serif);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:0 0 .4em}
 h1{font-size:clamp(2rem,3.6vw,2.9rem)}
 h2{font-size:clamp(1.5rem,2.3vw,2rem)}
 h3{font-size:1.15rem} h4{font-size:1.02rem}
@@ -65,7 +65,7 @@ p{margin:0 0 .9em;max-width:68ch}
 @media (max-width:640px){#demobar .hide-sm{display:none}}
 
 /* buttons, forms */
-.btn{white-space:nowrap;font:inherit;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border-radius:8px;padding:.68rem 1.2rem;min-height:44px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;line-height:1.2;transition:background .15s,border-color .15s,box-shadow .15s,color .15s}
+.btn{white-space:normal;text-align:center;font:inherit;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border-radius:999px;padding:.68rem 1.2rem;min-height:44px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;line-height:1.2;transition:background .15s,border-color .15s,box-shadow .15s,color .15s}
 .btn-donate{background:var(--wattle);color:var(--gold-ink)}
 .btn-donate:hover{background:#DD9A26;box-shadow:0 6px 16px -8px rgba(201,135,20,.7)}
 .btn-primary{background:var(--ink);color:var(--on-ink)}
@@ -101,10 +101,11 @@ input[type=checkbox]:disabled,input[type=radio]:disabled{opacity:.35;cursor:not-
 .field-error::before{content:"!";display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--danger);color:#fff;font-size:.7rem;font-weight:700;flex:none}
 .invalid{border-color:var(--danger)!important;box-shadow:0 0 0 3px var(--danger-soft)!important}
 .row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
 .grid2 > label.f,.grid3 > label.f{align-self:end}
-@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:761px) and (max-width:1100px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* public chrome */
 .wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
@@ -135,7 +136,7 @@ footer.pub b{display:block;margin-bottom:.5rem;color:#fff;font-weight:700}
 footer.pub .muted{color:#A9BCD0}
 footer.pub .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}
 footer.pub .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-@media (max-width:800px){footer.pub .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:800px){footer.pub .cols{grid-template-columns:repeat(2,minmax(0,1fr))} footer.pub .cols > div:first-child{grid-column:1/-1}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;background:#0E2A47;color:#fff;padding:4rem 0 4.4rem}
@@ -186,7 +187,7 @@ footer.pub .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;p
 .steps h4{margin-top:.6rem}
 @media (max-width:800px){.steps{grid-template-columns:1fr 1fr;row-gap:2.2rem}}
 .cause-strip{display:flex;gap:.6rem;flex-wrap:wrap}
-.cause-tile{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--line-2);border-radius:8px;padding:.55rem .95rem;text-decoration:none;font-weight:600;transition:border-color .15s,background .15s}
+.cause-tile{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:.55rem 1.05rem;text-decoration:none;font-weight:600;transition:border-color .15s,background .15s}
 .cause-tile:hover{border-color:var(--ink);background:var(--surface-2)}
 .cause-tile svg{width:20px;height:20px;color:var(--teal)}
 .quote{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--wattle);border-radius:10px;padding:1.4rem 1.5rem}
@@ -195,8 +196,8 @@ footer.pub .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;p
 .person small{display:block;color:var(--muted);font-size:.86rem}
 
 /* cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:1.25rem}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s, box-shadow .15s}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .15s, box-shadow .15s}
 .card:hover{border-color:var(--line-2);box-shadow:var(--shadow-lg)}
 .card:hover h4{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .card .cover{height:160px;position:relative}
@@ -212,7 +213,7 @@ footer.pub .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:2.4rem;p
 .cover-art{position:absolute;inset:0;display:block;width:100%;height:100%}
 .verified{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.94);color:#0E2A47;font-size:.78rem;font-weight:700;border-radius:4px;padding:.18rem .45rem}
 .verified svg{width:14px;height:14px;color:#13777A}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem}
 .panel + .panel{margin-top:1rem}
 .grid2 > .panel,.grid3 > .panel,.two-col > .panel,.cards > .panel{margin-top:0}
 .panel h3{margin-bottom:.75rem}
@@ -326,7 +327,7 @@ td .row{flex-wrap:nowrap}
 
 /* donate flow */
 .amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
-.amounts button{font:inherit;font-weight:700;font-size:1.15rem;padding:.85rem 0 .9rem;border-radius:8px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--text);cursor:pointer;position:relative;min-height:56px;transition:border-color .12s, background .12s}
+.amounts button{font:inherit;font-weight:700;font-size:1.15rem;padding:.85rem 0 .9rem;border-radius:12px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--text);cursor:pointer;position:relative;min-height:56px;transition:border-color .12s, background .12s}
 .amounts button:hover{border-color:var(--ink)}
 .amounts button.on{border-color:var(--ink);background:var(--ink);color:var(--on-ink)}
 .amounts .pop{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--wattle);color:var(--gold-ink);font-size:.7rem;font-weight:700;padding:.05rem .4rem;border-radius:4px;white-space:nowrap}
@@ -380,7 +381,7 @@ details.faq summary{cursor:pointer;font-weight:700;font-size:1.06rem;list-style:
 details.faq summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--muted)}
 details.faq[open] summary::after{content:"−"}
 details.faq summary::-webkit-details-marker{display:none}
-.chip{display:inline-flex;align-items:center;gap:.3rem;border:1.5px solid var(--line-2);border-radius:8px;padding:.4rem .85rem;font-weight:600;font-size:.92rem;background:var(--surface);cursor:pointer;color:var(--text);text-decoration:none;min-height:38px}
+.chip{display:inline-flex;align-items:center;gap:.3rem;border:1.5px solid var(--line-2);border-radius:999px;padding:.4rem .85rem;font-weight:600;font-size:.92rem;background:var(--surface);cursor:pointer;color:var(--text);text-decoration:none;min-height:38px}
 .chip:hover{border-color:var(--ink)}
 .chip.on{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
 .diff{font-size:.88rem}
@@ -392,6 +393,356 @@ details.faq summary::-webkit-details-marker{display:none}
 .cause-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:.35rem}
 .card .sum{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:560px){.stepper{gap:.2rem}.stepper span{padding-right:.5rem}.stepper span:not(.on){font-size:0}.stepper span:not(.on)::before{font-size:.8rem}}
+
+/* ===== modern donation layout ===== */
+.kicker{display:inline-block;font-size:.88rem;font-weight:700;color:var(--teal);margin-bottom:.55rem}
+.hero2{position:relative;color:#fff;overflow:hidden;background:#0E2A47}
+.hero2 .hero-media{position:absolute;inset:0}
+.hero2 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,20,36,.9) 0%,rgba(9,20,36,.72) 42%,rgba(9,20,36,.12) 78%),linear-gradient(0deg,rgba(9,20,36,.55) 0%,rgba(9,20,36,0) 40%)}
+.hero2 .hero-inner{position:relative;padding:6.2rem 1.25rem 8.4rem}
+.hero2 h1{color:#fff;font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:1.02;letter-spacing:-.035em;max-width:13ch;margin-bottom:1.2rem}
+.hero2 .lede{font-size:1.22rem;color:#DCE5EF;max-width:44ch;margin-bottom:0}
+.hero2 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;color:#F3CF8B;font-weight:600;font-size:.95rem;margin-bottom:1.1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:.3rem .8rem}
+.hero2 .eyebrow svg{width:16px;height:16px}
+.hero2 .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.5)}
+.hero2 .btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.hero2 .searchbar{border-radius:999px}
+.photo-credit{position:absolute;right:1.25rem;bottom:5.4rem;font-size:.78rem;color:rgba(255,255,255,.72);display:flex;gap:.35rem;align-items:center}
+.hero-stats{position:relative;z-index:3;margin-top:-3.6rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:repeat(4,1fr)}
+.hero-stats > div{padding:1.25rem 1.5rem;border-right:1px solid var(--line)}
+.hero-stats > div:last-child{border-right:none}
+.hero-stats b{display:block;font-family:var(--serif);font-size:1.75rem;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.15}
+:root[data-theme="dark"] .hero-stats b{color:var(--text)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero-stats b{color:var(--text)}}
+.hero-stats span{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.hero-stats{grid-template-columns:1fr 1fr}.hero-stats > div:nth-child(2){border-right:none}.hero-stats > div:nth-child(-n+2){border-bottom:1px solid var(--line)}.hero2 .hero-inner{padding:4rem 1.25rem 7rem}.photo-credit{display:none}}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.sec-head h2{margin:0;font-size:clamp(1.7rem,3vw,2.5rem)} .sec-head p{margin:.4rem 0 0;color:var(--muted);max-width:56ch}
+/* slider */
+.slider{position:relative}
+.slider-ctrl{display:flex;gap:.5rem;align-items:center}
+.sbtn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line-2);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--text);transition:all .15s}
+.sbtn:hover:not(:disabled){border-color:var(--ink);background:var(--ink);color:var(--on-ink)}
+.sbtn:disabled{opacity:.35;cursor:default}
+.sbtn svg{width:20px;height:20px}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 1.4rem) / 3);gap:1.4rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.4rem .2rem 1.4rem;margin:0 -.2rem;scrollbar-width:none;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.track > *{scroll-snap-align:start}
+.track.dragging{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
+.track.dragging a{pointer-events:none}
+@media (max-width:1020px){.track{grid-auto-columns:calc((100% - 1.4rem) / 2)}}
+@media (max-width:640px){.track{grid-auto-columns:86%;gap:1rem}}
+.sdots{display:flex;gap:.45rem;justify-content:center}
+.sdots button{width:9px;height:9px;border-radius:999px;border:none;background:var(--line-2);padding:0;cursor:pointer;transition:width .25s,background .25s}
+.sdots button.on{width:28px;background:var(--ink)}
+/* campaign card */
+.ccard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s,border-color .25s;min-width:0}
+.ccard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:transparent}
+.ccard-media{position:relative;height:228px;overflow:hidden;background:#0E2A47}
+.ccard-media .cover-art{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.ccard:hover .ccard-media .cover-art{transform:scale(1.06)}
+.ccard-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,20,36,0) 38%,rgba(9,20,36,.82) 100%)}
+.ccard-top{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;gap:.5rem;z-index:2}
+.glass{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.94);color:#0E2A47;font-size:.78rem;font-weight:600;border-radius:999px;padding:.26rem .65rem;white-space:nowrap}
+.glass svg{width:14px;height:14px;color:#13777A}
+.glass.dark{background:rgba(9,20,36,.55);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ccard-over{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff}
+.ccard-over small{font-size:.84rem;opacity:.9;display:flex;gap:.35rem;align-items:center}
+.ccard-over h3{color:#fff;font-size:1.28rem;margin:.2rem 0 0;line-height:1.18}
+.ccard-body{padding:1.05rem 1.15rem 1.15rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.ccard-body .sum{color:var(--muted);font-size:.95rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.ccard-body .progress{margin:.35rem 0 0}
+.amt{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.amt b{font-family:var(--serif);font-size:1.18rem;letter-spacing:-.01em}
+.amt span{color:var(--muted);font-size:.9rem}
+.ccard-foot{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:auto;padding-top:.75rem;border-top:1px solid var(--line)}
+.stack{display:flex;align-items:center;min-width:0}
+.stack .avatar{width:28px;height:28px;font-size:.66rem;border:2px solid var(--surface);margin-left:-8px}
+.stack .avatar:first-child{margin-left:0}
+.stack small{margin-left:.5rem;color:var(--muted);font-size:.88rem;white-space:nowrap}
+.give-chip{font-weight:700;color:var(--ink);font-size:.92rem;white-space:nowrap;display:inline-flex;align-items:center;gap:.25rem}
+.give-chip svg{width:16px;height:16px;transition:transform .2s}
+.ccard:hover .give-chip svg{transform:translateX(3px)}
+/* timeline */
+.how{position:relative;overflow:hidden;background:linear-gradient(180deg,#F8FBFD 0%,#EEF4F8 55%,#F6F2EA 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:5.4rem 0}
+:root[data-theme="dark"] .how{background:linear-gradient(180deg,#0E1B2C 0%,#0B1522 100%)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .how{background:linear-gradient(180deg,#0E1B2C 0%,#0B1522 100%)}}
+.how > .wrap{position:relative;z-index:1}
+.how-bg{position:absolute;inset:0;pointer-events:none}
+.how-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 420px at 12% 18%,rgba(233,169,59,.16),transparent 70%),radial-gradient(560px 460px at 88% 70%,rgba(19,119,122,.12),transparent 70%)}
+.how-bg-in{position:sticky;top:8vh;height:84vh;display:grid;place-items:center;padding:0 1rem}
+.aus-map{width:min(980px,96%);height:100%;max-height:760px;opacity:.95}
+.aus-map .arc{fill:none;stroke:#E9A93B;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0, (var(--p, 0) * 1.6 - var(--d, 0)), 1));opacity:.75}
+.aus-map .pulse{fill:#13777A;opacity:.18;transform-origin:center;animation:pinpulse 2.6s ease-out infinite}
+@keyframes pinpulse{0%{transform:scale(.4);opacity:.35}100%{transform:scale(1.6);opacity:0}}
+.aus-map .pin-l{font:600 13px var(--body);fill:#0E2A47;opacity:.7;paint-order:stroke;stroke:#F3F7FA;stroke-width:4px}
+.aus-map .hub-l{font-weight:800;opacity:.9;fill:#8A5A00}
+
+:root[data-theme="dark"] .aus-map{filter:invert(1) hue-rotate(180deg) brightness(.9)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aus-map{filter:invert(1) hue-rotate(180deg) brightness(.9)}}
+.how .tl-card{background:rgba(255,255,255,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+:root[data-theme="dark"] .how .tl-card{background:rgba(18,32,51,.92)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .how .tl-card{background:rgba(18,32,51,.92)}}
+.how .tl-line{background:rgba(14,42,71,.1)}
+@media (max-width:860px){.how{padding:4rem 0}.how-bg-in{top:12vh;height:60vh}.aus-map{opacity:.6}}
+@media (prefers-reduced-motion: reduce){.aus-map .pulse{animation:none}.aus-map .arc{stroke-dashoffset:0}}
+.how-head{text-align:center;max-width:660px;margin:0 auto 3.6rem}
+.how-head h2{font-size:clamp(1.9rem,3.4vw,2.8rem)} .how-head p{color:var(--muted);margin:0 auto}
+.tl{position:relative;max-width:1040px;margin:0 auto}
+.tl-line{position:absolute;left:50%;top:24px;bottom:24px;width:4px;margin-left:-2px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.tl-line i{position:absolute;left:0;top:0;width:100%;height:calc(var(--p, 0) * 100%);background:linear-gradient(180deg,var(--wattle),var(--teal));border-radius:4px}
+.tl-item{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:5.6rem;align-items:center;margin-bottom:3.4rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-card{grid-column:1;grid-row:1;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:var(--shadow);opacity:0;transform:translateX(-36px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.tl-side{grid-column:2;grid-row:1;opacity:0;transition:opacity .7s ease .15s}
+.tl-item.right .tl-card{grid-column:2;transform:translateX(36px)}
+.tl-item.right .tl-side{grid-column:1;text-align:right}
+.tl-item.in .tl-card{opacity:1;transform:none} .tl-item.in .tl-side{opacity:1}
+.tl-dot{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:var(--surface);border:3px solid var(--line-2);display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:1.1rem;color:var(--muted);transition:all .45s;z-index:2}
+.tl-item.in .tl-dot{border-color:var(--wattle);background:#0E2A47;color:#fff;box-shadow:0 0 0 7px rgba(233,169,59,.22)}
+.tl-side .step{font-family:var(--serif);font-weight:800;font-size:3.4rem;line-height:1;color:var(--surface-2);letter-spacing:-.04em}
+:root[data-theme="dark"] .tl-side .step{color:var(--line)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tl-side .step{color:var(--line)}}
+.tl-side p{color:var(--muted);margin:.35rem 0 0}
+.tl-side .when{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;color:var(--teal);margin-top:.6rem}
+.tl-side .when svg{width:16px;height:16px}
+.tl-card h3{font-size:1.32rem;margin:.1rem 0 .35rem}
+.tl-card > p{color:var(--muted);margin:0}
+.mini{margin-top:1.1rem;border:1px solid var(--line);border-radius:14px;padding:.85rem;background:var(--bg);font-size:.9rem}
+.mini-row{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.45rem .55rem;border-radius:10px;background:var(--surface);border:1px solid var(--line);margin-top:.45rem}
+.mini-row:first-child{margin-top:0}
+.mini-search{display:flex;gap:.5rem;align-items:center;color:var(--muted);background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:.4rem .8rem;margin-bottom:.5rem}
+.mini-search svg,.mini-row svg{width:15px;height:15px;flex:none}
+.mini-amts{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+.mini-amts span{border:1.5px solid var(--line-2);border-radius:10px;text-align:center;padding:.4rem 0;font-weight:700;background:var(--surface)}
+.mini-amts span.on{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+@media (max-width:860px){
+  .tl-line{left:26px}
+  .tl-item{grid-template-columns:1fr;padding-left:72px;margin-bottom:2.4rem}
+  .tl-item .tl-card,.tl-item.right .tl-card{grid-column:1;grid-row:2;transform:translateY(24px)}
+  .tl-item .tl-side,.tl-item.right .tl-side{grid-column:1;grid-row:1;text-align:left;margin-bottom:.8rem}
+  .tl-side .step{font-size:2.2rem}
+  .tl-dot{left:26px;top:0;margin:0 0 0 -26px}
+}
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1.05fr;gap:3.4rem;align-items:center}
+@media (max-width:900px){.calc{grid-template-columns:1fr;gap:2rem}}
+.calc-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:1.8rem;box-shadow:var(--shadow-lg)}
+.calc-card .big{font-family:var(--serif);font-size:3.4rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+:root[data-theme="dark"] .calc-card .big{color:var(--text)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .calc-card .big{color:var(--text)}}
+.calc-card .split-bar{height:18px;border-radius:999px;margin:1.3rem 0 1rem}
+.calc-card .split-bar i{border-radius:999px}
+.calc-list{list-style:none;margin:1rem 0 0;padding:0}
+.calc-list li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.facts{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.9rem}
+.facts li{display:grid;grid-template-columns:36px 1fr;gap:.8rem;align-items:start}
+.facts .fi{width:36px;height:36px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center}
+.facts .fi svg{width:18px;height:18px}
+.facts b{display:block}
+/* stories */
+.stories{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media (max-width:800px){.stories{grid-template-columns:1fr}}
+.story{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:200px 1fr}
+@media (max-width:560px){.story{grid-template-columns:1fr}.story .story-media{height:160px}}
+.story-media{position:relative;min-height:100%}
+.story blockquote{margin:0;padding:1.5rem}
+.story blockquote p{font-size:1.12rem;line-height:1.5;margin:0 0 1rem;color:var(--text)}
+/* navy org band */
+.band-navy{background:#0E2A47;color:#DCE6F1;padding:4.4rem 0;position:relative;overflow:hidden}
+.band-navy h2{color:#fff;font-size:clamp(1.9rem,3.2vw,2.6rem)}
+.band-navy .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2rem 0}
+@media (max-width:800px){.band-navy .benefits{grid-template-columns:1fr}}
+.band-navy .benefits div{border-top:2px solid rgba(233,169,59,.6);padding-top:1rem}
+.band-navy .benefits b{color:#fff;display:block;font-family:var(--serif);font-size:1.12rem;margin-bottom:.3rem}
+.band-navy .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.band-navy .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal,.tl-card,.tl-side{opacity:1!important;transform:none!important}}
+
+.photo-credit svg{width:14px;height:14px}
+.mini-row span{display:inline-flex;gap:.45rem;align-items:center}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:var(--surface-2)}
+input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:var(--surface-2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--wattle);border:4px solid var(--surface);box-shadow:0 2px 8px rgba(14,42,71,.35);margin-top:-9px}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--wattle);border:4px solid var(--surface);box-shadow:0 2px 8px rgba(14,42,71,.35)}
+input[type=range]:focus-visible::-webkit-slider-thumb{outline:3px solid var(--ink);outline-offset:2px}
+@media (max-width:640px){.cause-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.4rem;scrollbar-width:none;margin-left:-1.25rem;margin-right:-1.25rem;padding-left:1.25rem;padding-right:1.25rem}.cause-row::-webkit-scrollbar{display:none}.cause-row > *{flex:none}}
+
+/* split hero */
+.hero3{position:relative;overflow:hidden;padding:3.6rem 0 5.6rem;background:linear-gradient(180deg,#E6EEF6 0%,var(--bg) 100%)}
+:root[data-theme="dark"] .hero3{background:linear-gradient(180deg,#10203A 0%,var(--bg) 100%)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero3{background:linear-gradient(180deg,#10203A 0%,var(--bg) 100%)}}
+.hero3-bg{position:absolute;inset:0;background:radial-gradient(600px 380px at 85% 10%,rgba(233,169,59,.18),transparent 70%),radial-gradient(520px 420px at 0% 100%,rgba(19,119,122,.12),transparent 70%);pointer-events:none}
+.hero3 .wrap{position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:4.6rem;align-items:center}
+.hero3 h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.03;letter-spacing:-.035em;color:var(--ink);max-width:14ch;margin-bottom:1.1rem}
+:root[data-theme="dark"] .hero3 h1{color:var(--text)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero3 h1{color:var(--text)}}
+.hero3 .lede{font-size:1.2rem;color:var(--muted);max-width:44ch;margin-bottom:0}
+.hero3 .eyebrow{display:inline-flex;align-items:center;gap:.45rem;background:var(--teal-soft);color:var(--teal);font-weight:600;font-size:.92rem;border-radius:999px;padding:.32rem .85rem;margin-bottom:1.2rem}
+.hero3 .eyebrow svg{width:16px;height:16px}
+.hero3 .searchbar{border-radius:999px;border:1.5px solid var(--line-2);box-shadow:var(--shadow);margin:1.6rem 0 1.1rem}
+:root[data-theme="dark"] .hero3 .searchbar{background:var(--surface)} :root[data-theme="dark"] .hero3 .searchbar input{color:var(--text)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero3 .searchbar{background:var(--surface)} :root:not([data-theme="light"]) .hero3 .searchbar input{color:var(--text)}}
+.proof{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem;color:var(--muted);font-size:.95rem}
+.proof b{color:var(--text)}
+.proof .avatar{width:34px;height:34px;font-size:.72rem;border:2px solid var(--bg)}
+.hero-visual{position:relative;padding:0 0 3rem 0}
+.hero-img{position:relative;height:580px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);background:#0E2A47;transition:opacity .18s}
+.hero-img.swap{opacity:.35}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,20,36,.25) 0%,rgba(9,20,36,0) 30%,rgba(9,20,36,0) 65%,rgba(9,20,36,.45) 100%);pointer-events:none}
+.hero-chip{position:absolute;top:18px;right:18px;z-index:2;padding:.3rem .75rem .3rem .3rem;gap:.45rem;box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+.hero-chip .avatar{font-size:.6rem}
+.hero-cap{position:absolute;right:18px;bottom:16px;z-index:2;color:#fff;font-size:.8rem;display:flex;gap:.35rem;align-items:center;opacity:.9}
+.hero-cap svg{width:14px;height:14px}
+.qd{position:absolute;left:-3.4rem;bottom:0;width:322px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 34px 70px -30px rgba(14,42,71,.55);padding:1.1rem 1.15rem 1rem;z-index:3}
+.qd-head{display:flex;justify-content:space-between;align-items:center}
+.qd-head b{font-family:var(--serif);font-size:1.1rem}
+.qd label.f{font-size:.88rem;color:var(--muted)}
+.qd select{font-weight:600;color:var(--text);border-radius:12px}
+.qd-meta{display:flex;justify-content:space-between;gap:.6rem;font-size:.86rem;color:var(--muted);margin-top:.55rem}
+.qd-seg{display:flex;margin-top:.85rem;width:100%} .qd-seg button{flex:1;min-height:36px;padding:.35rem .6rem;font-size:.92rem}
+.qd-seg button:disabled{opacity:.4;cursor:not-allowed}
+.qd-amts{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin:.6rem 0}
+.qd-amts button{font:inherit;font-weight:700;border:1.5px solid var(--line-2);background:var(--surface);color:var(--text);border-radius:12px;padding:.5rem 0;cursor:pointer;min-height:42px;transition:all .12s}
+.qd-amts button:hover{border-color:var(--ink)}
+.qd-amts button.on{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.qd-impact{display:flex;gap:.5rem;align-items:flex-start;font-size:.88rem;background:var(--teal-soft);border-radius:12px;padding:.55rem .7rem;margin-bottom:.75rem;min-height:3.1em}
+.qd-impact svg{width:16px;height:16px;flex:none;color:var(--teal);margin-top:.15rem}
+.qd-foot{display:flex;gap:.4rem;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted);margin-top:.6rem}
+.qd-foot svg{width:14px;height:14px;color:var(--teal)}
+.hero3 + .wrap .hero-stats{margin-top:-2.6rem}
+@media (max-width:980px){.hero3 .wrap{grid-template-columns:1fr;gap:2.4rem}.hero-visual{padding:0}.hero-img{height:300px;border-radius:22px}.qd{position:relative;left:auto;width:auto;margin:-3.2rem .9rem 0}.hero3{padding:2.4rem 0 4.4rem}}
+
+/* immersive carousel hero */
+.hx{position:relative;height:clamp(600px,calc(100vh - 128px),820px);background:#0A1626;color:#fff;overflow:hidden;isolation:isolate}
+.hx-slides{position:absolute;inset:0;touch-action:pan-y}
+.hx-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1s ease,visibility 1s}
+.hx-slide.on{opacity:1;visibility:visible;z-index:1}
+.hx-media{position:absolute;inset:0;overflow:hidden}
+.hx-media .cover-art{transform:scale(1.14);transform-origin:60% 55%}
+.hx-slide.on .hx-media .cover-art{animation:kb 9s cubic-bezier(.2,.6,.2,1) forwards}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.02)}}
+.hx-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,18,32,.86) 0%,rgba(8,18,32,.62) 38%,rgba(8,18,32,.08) 72%),linear-gradient(0deg,rgba(8,18,32,.92) 0%,rgba(8,18,32,.3) 30%,rgba(8,18,32,0) 52%),linear-gradient(180deg,rgba(8,18,32,.55) 0%,rgba(8,18,32,0) 22%)}
+.hx-content{position:absolute;left:0;right:0;bottom:150px;padding-left:1.25rem;padding-right:1.25rem;z-index:2}
+.hx-content > *{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.hx-slide.on .hx-content > *{opacity:1;transform:none}
+.hx-slide.on .hx-content > :nth-child(1){transition-delay:.25s} .hx-slide.on .hx-content > :nth-child(2){transition-delay:.35s} .hx-slide.on .hx-content > :nth-child(3){transition-delay:.45s} .hx-slide.on .hx-content > :nth-child(4){transition-delay:.55s} .hx-slide.on .hx-content > :nth-child(5){transition-delay:.65s}
+.hx-tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.hx-title{color:#fff;font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:.98;letter-spacing:-.045em;font-weight:800;max-width:12ch;margin:0 0 1rem}
+.hx-sum{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#DCE5EF;max-width:46ch;margin:0 0 1.5rem}
+.hx-prog{max-width:520px;margin-bottom:1.6rem}
+.hx-amt{display:flex;align-items:baseline;gap:.6rem}
+.hx-amt b{font-family:var(--serif);font-size:2rem;font-weight:800;letter-spacing:-.03em;color:#fff}
+.hx-amt span{color:#C3D2E2}
+.hx-amt em{margin-left:auto;font-style:normal;font-weight:700;color:#F3CF8B;font-size:1.1rem}
+.hx-bar{height:6px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden;margin:.6rem 0 .7rem}
+.hx-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#E9A93B,#F6CF7E);border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.2,1) .5s}
+.hx-slide.on .hx-bar i{width:var(--w)}
+.hx-meta{display:flex;justify-content:space-between;align-items:center;gap:1rem;color:#C3D2E2;font-size:.92rem}
+.hx-meta .avatar{border-color:rgba(10,22,38,.8)}
+.hx-cta{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.hx-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hx-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff}
+.hx-by{display:flex;align-items:center;gap:.6rem;margin-left:1rem;font-size:.86rem;color:#C3D2E2;line-height:1.3}
+.hx-by b{color:#fff}
+.hx-place{position:absolute;right:1.25rem;bottom:150px;z-index:2;font-size:.8rem;color:rgba(255,255,255,.75);display:flex;gap:.35rem;align-items:center}
+.hx-place svg{width:14px;height:14px}
+.hx-top{position:absolute;left:0;right:0;top:0;z-index:4;padding-top:1.4rem}
+.hx-top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.hx-claim{display:flex;align-items:center;gap:.5rem;margin:0;color:#E6EDF5;font-weight:500;font-size:.95rem}
+.hx-claim svg{width:18px;height:18px;color:#F3CF8B;flex:none}
+.hx-ctrl{display:flex;align-items:center;gap:.5rem}
+.hx-count{font-variant-numeric:tabular-nums;color:#C3D2E2;font-size:.95rem;margin-right:.4rem}
+.hx-count b{color:#fff}
+.hx-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(10,22,38,.3);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all .15s}
+.hx-btn:hover{background:#fff;color:#0E2A47;border-color:#fff}
+.hx-btn svg{width:18px;height:18px}
+.hx-tabs{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:1.6rem}
+.hx-tabs .wrap{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:1.4rem}
+.hx-tab{font:inherit;text-align:left;background:none;border:none;color:rgba(255,255,255,.62);cursor:pointer;padding:0;display:flex;flex-direction:column;gap:.15rem;min-width:0;transition:color .2s}
+.hx-tab:hover,.hx-tab.on{color:#fff}
+.hx-line{display:block;height:3px;background:rgba(255,255,255,.22);border-radius:3px;overflow:hidden;margin-bottom:.7rem}
+.hx-line i{display:block;height:100%;background:#E9A93B;transform-origin:left;transform:scaleX(0)}
+.hx-tab small{font-variant-numeric:tabular-nums;font-size:.8rem;opacity:.8}
+.hx-tab b{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hx-tab > span:last-child{font-size:.82rem;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hx:focus-within .hx-tab:focus-visible{outline:2px solid #E9A93B;outline-offset:4px}
+.hx + .wrap .hero-stats{margin-top:-1px;border-top-left-radius:0;border-top-right-radius:0}
+@media (max-width:900px){
+  .hx{height:auto;min-height:760px}
+  .hx-content{bottom:96px}
+  .hx-title{max-width:none}
+  .hx-by{display:none}
+  .hx-place{display:none}
+  .hx-claim{font-size:.85rem}
+  .hx-count{display:none}
+  .hx-tabs{padding-bottom:1.2rem} .hx-tabs .wrap{gap:.5rem}
+  .hx-tab b,.hx-tab > span:last-child,.hx-tab small{display:none}
+  .hx-line{margin-bottom:0}
+  .hx-shade{background:linear-gradient(0deg,rgba(8,18,32,.95) 0%,rgba(8,18,32,.6) 45%,rgba(8,18,32,.25) 100%)}
+}
+@media (max-width:560px){.hx-claim{display:none}.hx-top .wrap{justify-content:flex-end}.hx-cta{flex-direction:column;align-items:stretch;gap:.6rem}.hx-cta .btn{white-space:nowrap}.hx-tags .glass{font-size:.74rem}}
+@media (prefers-reduced-motion: reduce){.hx-slide.on .hx-media .cover-art{animation:none;transform:none}.hx-content > *{opacity:1!important;transform:none!important}}
+
+/* responsive hardening */
+.summary-line > *{min-width:0;overflow-wrap:anywhere}
+.panel,.card,.ccard,.kpi{min-width:0}
+td,th{overflow-wrap:normal}
+@media (max-width:1200px){header.pub .wrap{gap:1rem} nav.main{margin-left:.2rem} nav.main a{padding:.5rem .55rem} .logo{font-size:1.02rem}}
+@media (max-width:420px){header.pub .wrap{gap:.45rem;height:64px} header.pub .btn-sm{padding:.4rem .7rem;min-height:38px} .logo{gap:.5rem;font-size:.98rem} .logo svg{width:32px;height:32px}}
+@media (max-width:374px){.logo > span{display:none}}
+@media (max-width:420px){.wrap{padding-left:1rem;padding-right:1rem} .pmain{padding-left:.9rem;padding-right:.9rem} .panel{padding:1.15rem} .modal{padding:1.2rem} .hx-content{padding-left:1rem;padding-right:1rem}}
+@media (max-width:360px){.amounts{grid-template-columns:repeat(2,1fr)} .qd-amts{grid-template-columns:repeat(2,1fr)} .hero-stats b{font-size:1.4rem} .hero-stats > div{padding:1rem}}
+@media (min-width:861px) and (max-width:1100px){.tl-item{column-gap:5rem} .tl-card{padding:1.3rem}}
+@media (max-height:820px) and (min-width:901px){.hx{height:clamp(640px,calc(100vh - 128px),820px)} .hx-title{font-size:clamp(2.4rem,5.2vw,4.4rem)} .hx-sum{margin-bottom:1.1rem} .hx-prog{margin-bottom:1.2rem} .hx-content{bottom:136px} .hx-place{bottom:136px}}
+@media (min-width:1600px){.wrap{max-width:1280px} .hx-title{font-size:6rem}}
+
+header.pub .btn,td .btn,.row .btn-sm,.hx-cta .btn,.toolbar .btn,.qd .btn{white-space:nowrap}
+@media (max-width:420px){.cause-row{margin-left:-1rem;margin-right:-1rem;padding-left:1rem;padding-right:1rem}}
+
+.tl-card,.tl-side{min-width:0}
+.mini-row{flex-wrap:wrap}
+@media (max-width:860px){.tl-item{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.tl-line{left:19px}.tl-item{padding-left:52px}.tl-dot{left:19px;width:40px;height:40px;margin-left:-20px;font-size:.95rem}.tl-card{padding:1.1rem}.mini{padding:.65rem}}
+
+@media (max-width:980px){header.pub .btn-donate{margin-left:auto} header.pub .menu-btn{margin-left:0}}
+@media (max-width:1180px){.pmain .two-col{grid-template-columns:minmax(0,1fr)}}
+
+/* consistent inner pages */
+.phead{position:relative;overflow:hidden;background:linear-gradient(180deg,#E6EEF6 0%,var(--bg) 100%);border-bottom:1px solid var(--line);padding:2.6rem 0 2.4rem}
+:root[data-theme="dark"] .phead{background:linear-gradient(180deg,#10203A 0%,var(--bg) 100%)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .phead{background:linear-gradient(180deg,#10203A 0%,var(--bg) 100%)}}
+.phead::after{content:"";position:absolute;right:-40px;top:-30px;width:460px;height:320px;background-image:radial-gradient(rgba(14,42,71,.16) 1.6px,transparent 1.9px);background-size:13px 13px;-webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent);mask-image:radial-gradient(closest-side,#000 30%,transparent);pointer-events:none}
+.phead .crumbs{margin:0 0 1rem;position:relative;z-index:1}
+.phead-row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:1.2rem;flex-wrap:wrap}
+.phead-row > div:first-child{min-width:0;flex:1 1 420px}
+.phead h1{font-size:clamp(1.9rem,3.6vw,2.8rem);margin:0 0 .55rem;max-width:24ch}
+.phead .lede{font-size:1.1rem;color:var(--muted);max-width:64ch;margin:0}
+.phead .kicker .badge{vertical-align:middle}
+.page{padding-top:2.2rem;padding-bottom:3.6rem}
+.wrap.narrow{max-width:860px}
+.page > .panel:first-child,.page > .callout:first-child{margin-top:0}
+.icard{display:flex;flex-direction:column;gap:.45rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.4rem;text-decoration:none;color:inherit;min-width:0;transition:border-color .2s,box-shadow .2s,transform .2s}
+a.icard:hover{border-color:transparent;box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+a.icard:hover h3{color:var(--teal)}
+.icard .ic{width:44px;height:44px;border-radius:12px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;margin-bottom:.35rem}
+.icard .ic svg{width:22px;height:22px}
+.icard h3{margin:0;font-size:1.14rem;transition:color .2s}
+.icard p{margin:0;color:var(--muted);font-size:.97rem}
+.icard .more{margin-top:auto;padding-top:.7rem;font-size:.92rem;white-space:normal}
+@media (max-width:640px){.phead{padding:1.8rem 0 1.7rem}.phead::after{width:260px;height:200px}.page{padding-top:1.6rem}}
+
+@media (max-width:640px){.toolbar input:not([type=checkbox]){flex:1 1 100%}.toolbar select{flex:1 1 calc(50% - .6rem);min-width:0}.toolbar .btn{flex:0 0 auto}}
+form[data-form="login"]{margin:0 auto}
+form[data-form="login"] + p{text-align:center}
+
+/* timeline side labels: clear of the line, dots and background map */
+.tl-item.left .tl-side{padding-left:1rem}
+.tl-item.right .tl-side{padding-right:1rem}
+.tl-side-in{display:inline-flex;flex-direction:column;align-items:flex-start;gap:.15rem;background:rgba(247,250,252,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(220,226,234,.8);border-radius:14px;padding:.7rem 1rem .8rem}
+.tl-item.right .tl-side-in{align-items:flex-end}
+:root[data-theme="dark"] .tl-side-in{background:rgba(12,23,37,.86);border-color:rgba(38,56,81,.9)} @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tl-side-in{background:rgba(12,23,37,.86);border-color:rgba(38,56,81,.9)}}
+.tl-side .step{color:var(--line-2)}
+.tl-side .when{margin-top:.2rem}
+.tl-dot{background:var(--surface)}
+.aus-map .pin-l{font-size:12px;opacity:.5}
+@media (max-width:860px){.tl-item.left .tl-side,.tl-item.right .tl-side{padding:0}.tl-item.right .tl-side-in{align-items:flex-start}}
+.glass.soft{background:var(--teal-soft);color:var(--teal)}
+.glass.soft svg{color:var(--teal)}
 </style>
 </head>
 <body>
@@ -688,31 +1039,99 @@ function contours(cx, cy, n, step, r, color, op, sx = 1.7) {
   }
   return out;
 }
-function coverSVG(seed, cause, wide, label) {
-  const [c1, c2] = pal(cause); const r = rng(Math.abs(seed) * 31 + 7); const H = 300;
-  const X0 = wide ? -300 : 0, WW = wide ? 1200 : 600; const id = 'cv' + (++_svgId);
-  const lx = .55 + r() * .3, ly = .15 + r() * .25;
-  return `<svg class="cover-art" viewBox="${X0} 0 ${WW} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${esc(label || cause)}">
-  <defs><linearGradient id="${id}g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient>
-  <radialGradient id="${id}l" cx="${lx}" cy="${ly}" r=".75"><stop offset="0" stop-color="#FFE7B8" stop-opacity=".45"/><stop offset=".55" stop-color="#FFE7B8" stop-opacity=".06"/><stop offset="1" stop-color="#FFE7B8" stop-opacity="0"/></radialGradient>
-  <filter id="${id}n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .09"/></feComponentTransfer></filter></defs>
-  <rect x="${X0}" width="${WW}" height="${H}" fill="url(#${id}g)"/>
-  <rect x="${X0}" width="${WW}" height="${H}" fill="url(#${id}l)"/>
-  ${contours(X0 + WW * (.25 + r() * .5), 200 + r() * 70, 10, 30, r, '#FFFFFF', .13)}
-  <path d="M${X0} ${226 + r() * 20} C ${X0 + WW * .3} ${210 + r() * 20} ${X0 + WW * .6} ${250} ${X0 + WW} ${222 + r() * 20} V300 H${X0}Z" fill="#0A1626" opacity=".28"/>
-  <path d="M${X0} ${258} C ${X0 + WW * .35} 246 ${X0 + WW * .65} 272 ${X0 + WW} 254 V300 H${X0}Z" fill="#0A1626" opacity=".25"/>
-  <rect x="${X0}" width="${WW}" height="${H}" filter="url(#${id}n)"/>
-  <g transform="translate(${X0 + (wide ? 380 : 78)} ${H - 66})" opacity=".9"><rect width="44" height="44" rx="8" fill="#FFFFFF" fill-opacity=".14" stroke="#FFFFFF" stroke-opacity=".3"/><g transform="translate(10 10)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${CAUSE_ICON[cause] || CAUSE_ICON.Community}</svg></g></g>
-  </svg>`;
+/* ---- painted Australian landscapes (no characters) ---- */
+const TIMES = {
+  golden: { sky: ['#1E3657', '#B9805A', '#F2C68C'], sun: '#FFE7B5', glow: '#FFC67E', haze: '#F6D7AE', far: '#A1909A', mid: '#5F5868', near: '#232436', sea: ['#E7B987', '#3B4A66'] },
+  dusk: { sky: ['#13213B', '#56477A', '#E38A69'], sun: '#FFD2A0', glow: '#F59E73', haze: '#E7A387', far: '#766A88', mid: '#403C5A', near: '#17192A', sea: ['#D98C72', '#2A2F4E'] },
+  morning: { sky: ['#3C6A97', '#8DB5D4', '#EEDDBF'], sun: '#FFF4DA', glow: '#FFE3B0', haze: '#EFE3CD', far: '#8DA3B6', mid: '#55707F', near: '#20323C', sea: ['#C9DCE6', '#2D5470'] },
+};
+const SCENE_BY_CAUSE = { 'Youth': 'coast', 'Food relief': 'river', 'Environment': 'outback', 'Arts & culture': 'harbour', 'Mental health': 'plains', 'Disability': 'tropics', 'Animal welfare': 'hills', 'Community': 'river' };
+const PLACE_BY_CAUSE = { 'Youth': 'Coastline near Newcastle, NSW', 'Food relief': 'Murrumbidgee River, Riverina', 'Environment': 'West Kimberley ranges, WA', 'Arts & culture': 'Derwent River and kunanyi, Hobart', 'Mental health': 'Mallee country near Mildura, VIC', 'Disability': 'Castle Hill, Townsville', 'Animal welfare': 'Adelaide Hills, SA', 'Community': 'Regional Australia' };
+function ridge(X0, W, y0, amp, r, rough = 1) {
+  const p1 = r() * 6, p2 = r() * 6, p3 = r() * 6, f = 1 + r(); let d = `M${X0} 520 L${X0} ${y0}`;
+  for (let i = 0; i <= 80; i++) { const x = X0 + W * i / 80, t = i / 80 * Math.PI * 2; const y = y0 - amp * (.55 * Math.sin(t * f + p1) + .3 * Math.sin(t * 2.7 * f + p2) * rough + .15 * Math.sin(t * 6.3 + p3) * rough); d += ` L${x.toFixed(1)} ${y.toFixed(1)}`; }
+  return d + ` L${X0 + W} 520Z`;
 }
-function heroBg() {
-  const r = rng(77);
-  return `<svg class="bgart" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <defs><radialGradient id="hb1" cx=".82" cy=".25" r=".6"><stop offset="0" stop-color="#E9A93B" stop-opacity=".22"/><stop offset="1" stop-color="#E9A93B" stop-opacity="0"/></radialGradient>
-  <radialGradient id="hb2" cx=".1" cy=".95" r=".7"><stop offset="0" stop-color="#13777A" stop-opacity=".45"/><stop offset="1" stop-color="#13777A" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1440" height="560" fill="#0E2A47"/><rect width="1440" height="560" fill="url(#hb2)"/><rect width="1440" height="560" fill="url(#hb1)"/>
-  ${contours(1120, 470, 14, 34, r, '#9CC9E8', .1, 1.9)}${contours(180, 80, 8, 30, r, '#E9A93B', .08, 1.6)}</svg>`;
+function gum(x, base, h, c, r) {
+  const lean = (r() - .5) * h * .18, tx = x + lean, ty = base - h * .62, w = Math.max(1.2, h * .03);
+  let g = `<path d="M${x - w} ${base} C ${x - w * .6} ${base - h * .3} ${tx - w * .3} ${base - h * .45} ${tx} ${ty} C ${tx + w * .3} ${base - h * .45} ${x + w * .6} ${base - h * .3} ${x + w} ${base}Z" fill="${c}"/>`;
+  const clumps = [[tx, ty - h * .12], [tx - h * (.18 + r() * .1), ty + h * .02], [tx + h * (.16 + r() * .1), ty - h * .02]];
+  for (const [cx0, cy0] of clumps) {
+    g += `<path d="M${tx} ${ty + h * .08} Q ${(tx + cx0) / 2} ${cy0 + h * .08} ${cx0.toFixed(1)} ${(cy0 + h * .04).toFixed(1)}" stroke="${c}" stroke-width="${(w * .7).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+    for (let i = 0; i < 7; i++) { const ex = cx0 + (r() - .5) * h * .22, ey = cy0 + (r() - .5) * h * .1, rx = h * (.035 + r() * .05); g += `<ellipse cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${(rx * (.5 + r() * .25)).toFixed(1)}" transform="rotate(${((r() - .5) * 40).toFixed(0)} ${ex.toFixed(1)} ${ey.toFixed(1)})" fill="${c}"/>`; }
+  }
+  return g;
 }
+function palm(x, base, h, c, r) {
+  const bend = (r() - .3) * h * .35; const tx = x + bend, ty = base - h; let g = `<path d="M${x} ${base} Q ${x + bend * .2} ${base - h * .6} ${tx} ${ty}" stroke="${c}" stroke-width="${(h * .035).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+  for (let i = 0; i < 7; i++) { const a = -Math.PI + i * Math.PI / 6 + (r() - .5) * .3; const L = h * (.32 + r() * .12); const ex = tx + Math.cos(a) * L, ey = ty + Math.sin(a) * L * .55 + L * .25; g += `<path d="M${tx} ${ty} Q ${(tx + ex) / 2} ${ty - L * .18} ${ex.toFixed(1)} ${ey.toFixed(1)}" stroke="${c}" stroke-width="${(h * .028).toFixed(1)}" fill="none" stroke-linecap="round"/>`; }
+  return g;
+}
+function grass(X0, W, base, c, r, n = 140) { let d = ''; for (let i = 0; i < n; i++) { const x = X0 + r() * W, h = 6 + r() * 16, l = (r() - .5) * 8; d += `M${x.toFixed(1)} ${base + r() * 30} q ${(l / 2).toFixed(1)} ${(-h / 2).toFixed(1)} ${l.toFixed(1)} ${(-h).toFixed(1)} `; } return `<path d="${d}" stroke="${c}" stroke-width="1.4" fill="none" opacity=".75"/>`; }
+function landscapeSVG(seed, scene, wide, label, timeKey) {
+  const r = rng(Math.abs(seed) * 131 + 17); const H = 500;
+  const X0 = wide ? -400 : 0, W = wide ? 1600 : 800; const id = 'ls' + (++_svgId);
+  const T = TIMES[timeKey || ['golden', 'dusk', 'morning'][Math.floor(r() * 3)]];
+  const hz = scene === 'plains' ? 360 : scene === 'outback' ? 330 : 318;
+  const sx = X0 + W * (.5 + r() * .3), sy = hz - 18 - r() * 30;
+  let L = '';
+  const sky = `<linearGradient id="${id}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${T.sky[0]}"/><stop offset=".62" stop-color="${T.sky[1]}"/><stop offset="1" stop-color="${T.sky[2]}"/></linearGradient>`;
+  const glow = `<radialGradient id="${id}g" cx="${(sx - X0) / W}" cy="${sy / H}" r=".55"><stop offset="0" stop-color="${T.glow}" stop-opacity=".85"/><stop offset=".25" stop-color="${T.glow}" stop-opacity=".35"/><stop offset="1" stop-color="${T.glow}" stop-opacity="0"/></radialGradient>`;
+  const fog = `<linearGradient id="${id}f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${T.haze}" stop-opacity="0"/><stop offset=".5" stop-color="${T.haze}" stop-opacity=".55"/><stop offset="1" stop-color="${T.haze}" stop-opacity="0"/></linearGradient>`;
+  const seaG = `<linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${T.sea[0]}"/><stop offset="1" stop-color="${T.sea[1]}"/></linearGradient>`;
+  const vig = `<radialGradient id="${id}v" cx=".5" cy=".45" r=".8"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></radialGradient>`;
+  L += `<rect x="${X0}" width="${W}" height="${H}" fill="url(#${id}s)"/>`;
+  for (let i = 0; i < 4; i++) { const cy = 60 + r() * 150, cx = X0 + r() * W; L += `<ellipse cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" rx="${(120 + r() * 220).toFixed(0)}" ry="${(6 + r() * 10).toFixed(0)}" fill="#FFF6EA" opacity="${(.08 + r() * .12).toFixed(2)}" filter="url(#${id}b2)"/>`; }
+  L += `<rect x="${X0}" width="${W}" height="${H}" fill="url(#${id}g)"/><circle cx="${sx.toFixed(0)}" cy="${sy.toFixed(0)}" r="${scene === 'plains' ? 30 : 24}" fill="${T.sun}"/>`;
+  const far = T.far, mid = T.mid, near = T.near;
+  if (scene === 'coast') {
+    L += `<path d="${ridge(X0, W * .42, hz - 40, 26, r, .6)}" fill="${far}" filter="url(#${id}b1)" opacity=".9"/>`;
+    L += `<rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="url(#${id}w)"/>`;
+    for (let i = 0; i < 10; i++) { const y = hz + 6 + i * 9 + r() * 4; L += `<ellipse cx="${(sx + (r() - .5) * 30).toFixed(0)}" cy="${y.toFixed(0)}" rx="${(40 - i * 2.5 + r() * 14).toFixed(0)}" ry="1.6" fill="${T.sun}" opacity="${(.55 - i * .045).toFixed(2)}"/>`; }
+    L += `<path d="M${X0} ${hz - 70} C ${X0 + W * .12} ${hz - 78} ${X0 + W * .2} ${hz - 64} ${X0 + W * .26} ${hz - 30} L ${X0 + W * .3} ${hz + 6} L${X0} ${hz + 6}Z" fill="${mid}"/>`;
+    L += `<path d="M${X0} ${H} L${X0} ${H - 150} C ${X0 + W * .15} ${H - 172} ${X0 + W * .32} ${H - 120} ${X0 + W * .5} ${H - 128} C ${X0 + W * .7} ${H - 136} ${X0 + W * .86} ${H - 110} ${X0 + W} ${H - 118} L${X0 + W} ${H}Z" fill="${near}"/>` + grass(X0, W, H - 128, near, r, wide ? 260 : 150);
+    for (let i = 0; i < 3; i++) L += `<ellipse cx="${(X0 + W * (.62 + r() * .3)).toFixed(0)}" cy="${(H - 132 + r() * 10).toFixed(0)}" rx="${(14 + r() * 18).toFixed(0)}" ry="${(7 + r() * 6).toFixed(0)}" fill="${near}"/>`;
+  } else if (scene === 'river') {
+    L += `<path d="${ridge(X0, W, hz - 22, 18, r, .5)}" fill="${far}" filter="url(#${id}b1)" opacity=".85"/><rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="${mid}"/>`;
+    const rx = sx; L += `<path d="M${rx - 8} ${hz} C ${rx - 60} ${hz + 50} ${rx + 120} ${hz + 90} ${rx - 40} ${H} L ${rx + 180} ${H} C ${rx + 260} ${hz + 110} ${rx + 30} ${hz + 50} ${rx + 10} ${hz}Z" fill="url(#${id}w)" opacity=".95"/>`;
+    for (let i = 0; i < (wide ? 16 : 8); i++) { const x = X0 + r() * W; if (Math.abs(x - rx) < 40) continue; L += gum(x, hz + 4, 26 + r() * 22, far, r); }
+    for (let i = 0; i < (wide ? 7 : 3); i++) { const x = X0 + r() * W; L += gum(x, H - 30 + r() * 20, 120 + r() * 80, near, r); }
+    L += `<path d="${ridge(X0, W, H - 34, 10, r, .4)}" fill="${near}"/>` + grass(X0, W, H - 50, near, r, wide ? 220 : 110);
+  } else if (scene === 'outback') {
+    const rust = ['#C98A62', '#9A4E2C', '#5A2716', '#341509'];
+    let mesas = ''; for (let i = 0; i < (wide ? 6 : 3); i++) { const x = X0 + r() * W, w = 90 + r() * 160, h = 40 + r() * 50; mesas += `<path d="M${x - w / 2 - 30} ${hz} L${x - w / 2} ${hz - h} L${x + w / 2} ${hz - h + 4} L${x + w / 2 + 34} ${hz}Z" fill="${rust[0]}"/>`; }
+    L += `<g opacity=".8" filter="url(#${id}b1)">${mesas}</g><rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="${rust[1]}"/>`;
+    L += `<path d="M${X0 + W * .55} ${hz} L${X0 + W * .6} ${hz - 95} L${X0 + W * .78} ${hz - 90} L${X0 + W * .86} ${hz}Z" fill="${rust[2]}"/>`;
+    L += `<path d="${ridge(X0, W, H - 60, 14, r, .5)}" fill="${rust[3]}"/>`;
+    for (let i = 0; i < (wide ? 80 : 40); i++) L += `<ellipse cx="${(X0 + r() * W).toFixed(0)}" cy="${(hz + 30 + r() * 120).toFixed(0)}" rx="${(4 + r() * 8).toFixed(1)}" ry="${(2 + r() * 3).toFixed(1)}" fill="#6E5A2E" opacity=".55"/>`;
+    for (let i = 0; i < (wide ? 4 : 2); i++) L += gum(X0 + r() * W, H - 40, 90 + r() * 70, '#1E0E07', r);
+  } else if (scene === 'harbour') {
+    L += `<path d="M${X0} ${hz} L${X0 + W * .08} ${hz - 60} C ${X0 + W * .22} ${hz - 150} ${X0 + W * .32} ${hz - 160} ${X0 + W * .42} ${hz - 110} C ${X0 + W * .52} ${hz - 70} ${X0 + W * .6} ${hz - 50} ${X0 + W * .7} ${hz - 30} L${X0 + W} ${hz - 10} L${X0 + W} ${hz}Z" fill="${far}" filter="url(#${id}b1)"/>`;
+    let city = ''; let x = X0 + W * .45; while (x < X0 + W * .95) { const w = 10 + r() * 22, h = 6 + r() * 28; city += `<rect x="${x.toFixed(0)}" y="${(hz - h).toFixed(0)}" width="${w.toFixed(0)}" height="${(h + 2).toFixed(0)}" fill="${mid}"/>`; x += w + 1 + r() * 6; }
+    L += city + `<rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="url(#${id}w)"/>`;
+    for (let i = 0; i < 14; i++) L += `<rect x="${(X0 + r() * W).toFixed(0)}" y="${(hz + 8 + r() * 120).toFixed(0)}" width="${(20 + r() * 60).toFixed(0)}" height="1.4" fill="${T.sun}" opacity=".35"/>`;
+    L += `<path d="M${X0} ${H} L${X0} ${H - 50} C ${X0 + W * .3} ${H - 70} ${X0 + W * .6} ${H - 40} ${X0 + W} ${H - 60} L${X0 + W} ${H}Z" fill="${near}"/>`;
+  } else if (scene === 'plains') {
+    L += `<rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="#8C6A3C"/><rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="url(#${id}f)" opacity=".6"/>`;
+    for (let i = 0; i < (wide ? 26 : 12); i++) { const x = X0 + r() * W; L += gum(x, hz + 2, 14 + r() * 16, far, r); }
+    for (let i = 0; i < 18; i++) { const y = hz + 20 + i * 8; L += `<path d="M${X0} ${y} Q ${X0 + W / 2} ${y + 4} ${X0 + W} ${y}" stroke="#6E5230" stroke-width="1.2" fill="none" opacity="${(.2 + i * .02).toFixed(2)}"/>`; }
+    L += gum(X0 + W * (.15 + r() * .2), H - 20, 170, near, r) + `<path d="${ridge(X0, W, H - 26, 8, r, .4)}" fill="${near}"/>`;
+  } else if (scene === 'tropics') {
+    L += `<path d="${ridge(X0, W, hz - 50, 50, r, .7)}" fill="${far}" filter="url(#${id}b1)"/><path d="M${X0 + W * .3} ${hz} C ${X0 + W * .38} ${hz - 120} ${X0 + W * .52} ${hz - 125} ${X0 + W * .6} ${hz - 60} L${X0 + W * .66} ${hz}Z" fill="${mid}"/>`;
+    L += `<rect x="${X0}" y="${hz}" width="${W}" height="${H - hz}" fill="url(#${id}w)"/><path d="M${X0} ${H} L${X0} ${H - 70} C ${X0 + W * .3} ${H - 90} ${X0 + W * .6} ${H - 60} ${X0 + W} ${H - 80} L${X0 + W} ${H}Z" fill="${near}"/>`;
+    for (let i = 0; i < (wide ? 6 : 3); i++) L += palm(X0 + W * (.05 + r() * .9), H - 60, 130 + r() * 90, near, r);
+  } else {
+    for (let k = 0; k < 4; k++) { const c = [far, '#6B7457', '#3F4A35', near][k]; L += `<path d="${ridge(X0, W, hz + k * 38 - 20, 26 - k * 3, r, .8)}" fill="${c}" ${k === 0 ? `filter="url(#${id}b1)"` : ''}/>`; if (k === 1) for (let j = 0; j < 12; j++) L += `<path d="M${X0} ${hz + 30 + j * 6} Q ${X0 + W / 2} ${hz + 10 + j * 7} ${X0 + W} ${hz + 34 + j * 6}" stroke="#55603F" stroke-width="1.2" fill="none" opacity=".5"/>`; }
+    for (let i = 0; i < (wide ? 5 : 2); i++) L += gum(X0 + r() * W, H - 40, 110 + r() * 60, near, r);
+  }
+  L += `<rect x="${X0}" y="${hz - 40}" width="${W}" height="80" fill="url(#${id}f)" opacity=".5"/>`;
+  return `<svg class="cover-art" viewBox="${X0} 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${esc(label || 'Landscape illustration')}">
+  <defs>${sky}${glow}${fog}${seaG}${vig}<filter id="${id}b1" x="-5%" y="-20%" width="110%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter><filter id="${id}b2" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+  <filter id="${id}n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .1"/></feComponentTransfer></filter></defs>
+  ${L}<rect x="${X0}" width="${W}" height="${H}" fill="url(#${id}v)"/><rect x="${X0}" width="${W}" height="${H}" filter="url(#${id}n)"/></svg>`;
+}
+function coverSVG(seed, cause, wide, label) { return landscapeSVG(seed, SCENE_BY_CAUSE[cause] || 'river', wide, label || PLACE_BY_CAUSE[cause]); }
+function heroBg() { return landscapeSVG(9, 'coast', 1, 'Coastline at sunrise', 'golden'); }
 const CAUSE_ICON = {
   'Youth': '<circle cx="9" cy="7" r="3"/><path d="M3 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 22 19v2"/>',
   'Food relief': '<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7.5l1-3M12 7V3M16 7.5l-1-3"/>',
@@ -772,6 +1191,28 @@ const IMPACT = {
   'Community': { 2500: 'Helps a neighbour in need this week', 5000: 'Funds a community meal', 10000: 'Supports a local program for a month', 25000: 'Funds a community event' },
 };
 function impactFor(cause, cents) { const m = IMPACT[cause] || IMPACT.Community; const keys = Object.keys(m).map(Number).sort((a, b) => a - b); let best = null; for (const k of keys) if (cents >= k) best = k; return best ? m[best] : 'Every dollar helps this organisation plan with confidence'; }
+
+/* ===== light dotted map of Australia for the "how it works" section ===== */
+const AUS = [[142.5,-10.7],[143.5,-13.6],[145.3,-15.0],[145.8,-16.9],[146.8,-19.3],[148.7,-20.4],[149.2,-21.1],[150.5,-22.4],[150.9,-23.6],[152.3,-24.9],[153.1,-26.4],[153.4,-27.9],[153.6,-28.6],[153.1,-30.3],[152.9,-31.4],[151.8,-32.9],[151.2,-33.9],[150.9,-34.4],[150.7,-35.1],[150.1,-36.3],[149.9,-37.1],[149.98,-37.5],[148.2,-37.9],[147.2,-38.4],[146.4,-39.1],[145.5,-38.5],[144.9,-38.3],[144.3,-38.3],[143.5,-38.8],[142.3,-38.4],[141.6,-38.3],[140.6,-38.0],[139.8,-37.2],[139.6,-36.5],[138.9,-35.6],[138.5,-34.9],[138.3,-34.4],[138.1,-34.2],[137.8,-35.0],[137.5,-35.6],[136.9,-35.2],[137.4,-34.5],[137.8,-33.2],[137.8,-32.5],[137.3,-33.0],[136.6,-33.7],[136.0,-34.6],[135.9,-34.7],[135.6,-34.3],[134.9,-33.6],[134.2,-32.8],[133.7,-32.1],[132.6,-32.0],[131.1,-31.5],[129.5,-31.6],[128.9,-31.7],[127.1,-32.3],[125.5,-32.6],[124.0,-33.4],[121.9,-33.9],[119.9,-34.0],[117.9,-35.0],[116.6,-35.0],[115.1,-34.4],[115.0,-33.6],[115.6,-33.3],[115.7,-32.5],[115.8,-31.9],[115.1,-30.4],[114.6,-28.8],[113.9,-27.5],[113.5,-26.0],[113.7,-24.9],[113.4,-23.9],[113.8,-22.6],[114.1,-21.8],[115.1,-21.6],[116.7,-20.6],[118.6,-20.3],[120.1,-19.7],[121.5,-19.0],[122.2,-17.9],[122.9,-16.5],[123.6,-17.3],[123.9,-16.4],[124.9,-15.3],[125.5,-14.5],[126.6,-13.9],[127.7,-14.2],[128.1,-15.5],[129.0,-14.9],[129.5,-14.8],[129.8,-13.6],[130.3,-12.7],[130.8,-12.4],[131.3,-12.2],[132.3,-11.3],[132.9,-11.6],[134.4,-12.0],[135.8,-12.2],[136.6,-12.0],[136.9,-12.6],[136.0,-13.5],[135.8,-14.5],[135.5,-15.0],[136.3,-16.0],[137.6,-16.4],[139.0,-17.3],[139.5,-17.5],[140.8,-17.5],[141.4,-16.4],[141.6,-15.0],[141.6,-13.6],[141.9,-12.6],[142.2,-11.4]];
+const TAS = [[144.6,-40.7],[145.6,-40.9],[146.6,-41.1],[148.3,-40.9],[148.3,-42.2],[147.9,-43.2],[146.8,-43.6],[146.0,-43.4],[145.2,-42.2],[144.7,-41.3]];
+const PLACES = { Newcastle: [151.78, -32.93], 'Wagga Wagga': [147.37, -35.12], Broome: [122.24, -17.96], Hobart: [147.33, -42.88], Mildura: [142.16, -34.21], Townsville: [146.82, -19.26], Adelaide: [138.6, -34.93], Sydney: [151.21, -33.87] };
+function ausMap() {
+  const P = pts => 'M' + pts.map(p => { const [x, y] = [(p[0] - 112) * 13, (-p[1] - 9.5) * 14.2]; return x.toFixed(1) + ' ' + y.toFixed(1); }).join('L') + 'Z';
+  const xy = p => [(p[0] - 112) * 13, (-p[1] - 9.5) * 14.2];
+  const hub = xy([153.0, -27.5]);
+  const orgs = S.orgs.filter(o => o.status === 'approved' && PLACES[o.city]).map(o => ({ o, p: xy(PLACES[o.city]) }));
+  const arcs = orgs.map(({ p }, i) => { const mx = (hub[0] + p[0]) / 2, my = Math.min(hub[1], p[1]) - 60 - Math.abs(hub[0] - p[0]) * .12; return `<path d="M${hub[0].toFixed(1)} ${hub[1].toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${p[0].toFixed(1)} ${p[1].toFixed(1)}" pathLength="1" class="arc" style="--d:${(i * .08).toFixed(2)}"/>`; }).join('');
+  const pins = orgs.map(({ o, p }) => `<g class="pin" transform="translate(${p[0].toFixed(1)} ${p[1].toFixed(1)})"><circle r="16" class="pulse"/><circle r="6.5" fill="#13777A" stroke="#fff" stroke-width="2.5"/><text x="11" y="-9" class="pin-l">${esc(o.city)}</text></g>`).join('');
+  return `<svg class="aus-map" viewBox="-20 -20 600 520" role="img" aria-label="Map of Australia showing ACF organisations in ${orgs.map(x => x.o.city).join(', ')}">
+   <defs><pattern id="ausdots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.9" fill="#0E2A47"/></pattern>
+   <clipPath id="ausclip"><path d="${P(AUS)}"/><path d="${P(TAS)}"/></clipPath>
+   <radialGradient id="ausfade" cx=".55" cy=".45" r=".7"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></radialGradient>
+   <mask id="ausmask"><rect x="-20" y="-20" width="600" height="520" fill="url(#ausfade)"/></mask></defs>
+   <g mask="url(#ausmask)"><rect x="-20" y="-20" width="600" height="520" fill="url(#ausdots)" clip-path="url(#ausclip)" opacity=".16"/>
+   <path d="${P(AUS)}" fill="none" stroke="#0E2A47" stroke-opacity=".12" stroke-width="1.2"/><path d="${P(TAS)}" fill="none" stroke="#0E2A47" stroke-opacity=".12" stroke-width="1.2"/></g>
+   <g class="arcs">${arcs}</g>
+   <g class="hub" transform="translate(${hub[0].toFixed(1)} ${hub[1].toFixed(1)})"><title>ACF</title><circle r="9" fill="#E9A93B" stroke="#fff" stroke-width="3"/></g>${pins}</svg>`;
+}
 /* ===== UI primitives ===== */
 const ACT = {}, FORM = {}, CHG = {}, INP = {};
 let ui = { co: null, mobileNav: false, filters: {}, tabs: {} };
@@ -822,10 +1263,77 @@ function render() {
     else html = pub(viewPublic(R));
   } catch (err) { console.error(err); html = pub(`<div class="wrap section">${empty('Something went wrong on this screen', esc(err.message), '<a class="btn btn-ghost" href="#/">Go home</a>')}</div>`); }
   $('#app').innerHTML = html;
+  enhance();
   const p = location.hash.split('?')[0]; if (p !== lastPath) { window.scrollTo(0, 0); lastPath = p; ui.mobileNav = false; animateCounts(); }
   document.title = 'Australia Cares Foundation · Prototype';
 }
 window.addEventListener('hashchange', render);
+let _io;
+function enhance() {
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (_io) _io.disconnect();
+  const els = $$('.reveal, .tl-item');
+  if (reduce || !('IntersectionObserver' in window)) els.forEach(e => e.classList.add('in'));
+  else { _io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); _io.unobserve(en.target); } }), { threshold: .2, rootMargin: '0px 0px -8% 0px' }); els.forEach(e => _io.observe(e)); }
+  tlProgress(); initSliders(); initHero();
+}
+function tlProgress() { const tl = $('[data-tl]'); if (!tl) return; const r = tl.getBoundingClientRect(); const vh = window.innerHeight; const p = Math.min(1, Math.max(0, (vh * .62 - r.top) / r.height)); tl.style.setProperty('--p', p.toFixed(3)); const how = tl.closest('.how'); if (how) how.style.setProperty('--p', p.toFixed(3)); }
+window.addEventListener('scroll', tlProgress, { passive: true }); window.addEventListener('resize', tlProgress);
+function sliderInfo(sl) { const tr = $('.track', sl); const first = tr.children[0]; if (!first) return { tr, per: 1, pages: 1, page: 0, step: 0 }; const gap = parseFloat(getComputedStyle(tr).columnGap) || 0; const step = first.offsetWidth + gap; const per = Math.max(1, Math.round((tr.clientWidth + gap) / step)); const pages = Math.max(1, Math.ceil(tr.children.length / per)); const page = Math.min(pages - 1, Math.round(tr.scrollLeft / (step * per))); return { tr, per, pages, page, step }; }
+function initSliders() {
+  $$('[data-slider]').forEach(sl => {
+    const { tr } = sliderInfo(sl); const dots = $('.sdots', sl);
+    const upd = () => { const i = sliderInfo(sl); const prev = $('[data-dir="-1"]', sl), next = $('[data-dir="1"]', sl); if (prev) prev.disabled = tr.scrollLeft <= 4; if (next) next.disabled = tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4; if (dots) { if (dots.children.length !== i.pages) dots.innerHTML = Array.from({ length: i.pages }, (_, k) => `<button role="tab" aria-label="Page ${k + 1} of ${i.pages}" data-act="sdot" data-k="${k}"></button>`).join(''); [...dots.children].forEach((b, k) => { b.classList.toggle('on', k === i.page); b.setAttribute('aria-selected', k === i.page); }); } };
+    if (!tr._bound) {
+      tr._bound = true; let down = false, sx = 0, s0 = 0, moved = false;
+      tr.addEventListener('scroll', () => { cancelAnimationFrame(tr._raf); tr._raf = requestAnimationFrame(upd); }, { passive: true });
+      tr.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; sx = e.clientX; s0 = tr.scrollLeft; });
+      tr.addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - sx; if (!moved && Math.abs(dx) > 6) { moved = true; tr.classList.add('dragging'); tr.setPointerCapture(e.pointerId); } if (moved) tr.scrollLeft = s0 - dx; });
+      const end = () => { if (!down) return; down = false; if (moved) { tr.classList.remove('dragging'); const i = sliderInfo(sl); tr.scrollTo({ left: Math.round(tr.scrollLeft / i.step) * i.step, behavior: 'smooth' }); } };
+      tr.addEventListener('pointerup', end); tr.addEventListener('pointercancel', end);
+      tr.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+      tr.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const i = sliderInfo(sl); tr.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * i.step, behavior: 'smooth' }); } });
+      window.addEventListener('resize', upd);
+    }
+    upd();
+  });
+}
+const HX = { i: 0, t0: 0, paused: false, hover: false, raf: 0, dur: 7000, elapsed: 0 };
+function hxGo(i, user) {
+  const root = $('[data-hx]'); if (!root) return; const slides = $$('.hx-slide', root), tabs = $$('.hx-tab', root); const n = slides.length; if (!n) return;
+  HX.i = (i + n) % n; HX.elapsed = 0; HX.t0 = performance.now();
+  slides.forEach((s, k) => { const on = k === HX.i; s.classList.toggle('on', on); on ? s.removeAttribute('aria-hidden') : s.setAttribute('aria-hidden', 'true'); $$('a,button', s).forEach(x => x.tabIndex = on ? 0 : -1); });
+  tabs.forEach((t, k) => { t.classList.toggle('on', k === HX.i); t.setAttribute('aria-selected', k === HX.i); t.classList.toggle('done', k < HX.i); const l = $('.hx-line i', t); if (l) l.style.transform = `scaleX(${k < HX.i ? 1 : 0})`; });
+  const c = $('[data-hx-n]', root); if (c) c.textContent = String(HX.i + 1).padStart(2, '0');
+  if (user) { const live = $('.hx-slides', root); live.setAttribute('aria-live', 'polite'); }
+}
+function hxLoop(t) {
+  const root = $('[data-hx]'); if (!root) { HX.raf = 0; return; }
+  const running = !HX.paused && !HX.hover && !document.hidden;
+  if (running) { HX.elapsed += t - (HX.last || t); }
+  HX.last = t;
+  const k = Math.min(1, HX.elapsed / HX.dur); const l = $(`.hx-tab:nth-child(${HX.i + 1}) .hx-line i`, root); if (l) l.style.transform = `scaleX(${k})`;
+  if (k >= 1) hxGo(HX.i + 1);
+  HX.raf = requestAnimationFrame(hxLoop);
+}
+function initHero() {
+  const root = $('[data-hx]'); cancelAnimationFrame(HX.raf); HX.raf = 0; if (!root) return;
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; HX.paused = HX.paused || reduce; HX.hover = false; HX.last = 0;
+  hxGo(HX.i || 0); hxPauseUI();
+  root.addEventListener('mouseenter', () => HX.hover = true); root.addEventListener('mouseleave', () => HX.hover = false);
+  root.addEventListener('focusin', () => HX.hover = true); root.addEventListener('focusout', e => { if (!root.contains(e.relatedTarget)) HX.hover = false; });
+  root.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { hxGo(HX.i + 1, true); } if (e.key === 'ArrowLeft') { hxGo(HX.i - 1, true); } });
+  let sx = null; const area = $('.hx-slides', root);
+  area.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse') return; sx = e.clientX; });
+  area.addEventListener('pointerup', e => { if (sx == null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 45) hxGo(HX.i + (dx < 0 ? 1 : -1), true); });
+  HX.raf = requestAnimationFrame(hxLoop);
+}
+function hxPauseUI() { const b = $('[data-hx-pause]'); if (!b) return; b.setAttribute('aria-label', HX.paused ? 'Play slideshow' : 'Pause slideshow'); b.innerHTML = HX.paused ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>'; }
+ACT.hxGo = el => hxGo(+el.dataset.i, true);
+ACT.hxStep = el => hxGo(HX.i + Number(el.dataset.d), true);
+ACT.hxPause = () => { HX.paused = !HX.paused; hxPauseUI(); };
+ACT.slide = el => { const sl = el.closest('[data-slider]'); const i = sliderInfo(sl); i.tr.scrollBy({ left: Number(el.dataset.dir) * i.step * i.per, behavior: 'smooth' }); };
+ACT.sdot = el => { const sl = el.closest('[data-slider]'); const i = sliderInfo(sl); i.tr.scrollTo({ left: Number(el.dataset.k) * i.step * i.per, behavior: 'smooth' }); };
 function animateCounts() { if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; $$('[data-count-to]').forEach(el => { const to = +el.dataset.countTo; const t0 = performance.now(); const step = t => { const k = Math.min(1, (t - t0) / 900); el.textContent = money(Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }); $$('.progress > i').forEach(i => { const w = i.style.width; i.style.width = '0%'; requestAnimationFrame(() => requestAnimationFrame(() => { i.style.width = w; })); }); }
 document.addEventListener('input', e => { const t = e.target; if (t.classList && t.classList.contains('invalid')) { t.classList.remove('invalid'); t.removeAttribute('aria-invalid'); const n = (t.closest('label') || t).nextElementSibling; if (n && n.classList.contains('field-error')) n.remove(); } });
 document.addEventListener('focusout', e => { const t = e.target; if (t.type === 'email' && !t.readOnly && t.value.trim() && !isEmail(t.value.trim()) && !t.classList.contains('invalid')) { t.classList.add('invalid'); t.setAttribute('aria-invalid', 'true'); const m = document.createElement('div'); m.className = 'field-error'; m.textContent = 'That email looks incomplete. Use a format like name@example.com'; (t.closest('label') || t).after(m); } });
@@ -873,18 +1381,35 @@ ACT.mnav = () => { ui.mobileNav = !ui.mobileNav; render(); };
 /* ===== public cards ===== */
 const pubOrgs = () => S.orgs.filter(o => o.status === 'approved' && o.published && !o.suspended);
 const isPublicCamp = c => ['active', 'closed'].includes(c.status) && org(c.orgId)?.status === 'approved' && !org(c.orgId).suspended && (!c.parentId || camp(c.parentId)?.status !== 'draft') && !c.hidden;
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const SHIELD_S = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>';
+function donorStack(list, total) { const uniq = []; for (const d of list.slice().reverse()) { const n = d.anonymous ? 'Anonymous' : d.first + ' ' + d.last; if (!uniq.includes(n)) uniq.push(n); if (uniq.length === 3) break; } return `<span class="stack">${uniq.map(n => n === 'Anonymous' ? '<span class="avatar" style="background:#8A97A8" aria-hidden="true">A</span>' : avatar(n)).join('')}<small>${plural(total, 'donor')}</small></span>`; }
 function orgCard(o) {
-  const n = S.campaigns.filter(c => c.orgId === o.id && !c.parentId && isPublicCamp(c)).length;
-  return `<a class="card" href="#/o/${o.slug}"><div class="cover">${coverSVG(o.id.charCodeAt(1) * 7, o.cause, 0, o.name)}${verifiedTag()}</div><div class="body"><span class="kind">${esc(o.cause)}, ${esc(o.city)} ${o.state}</span><h4>${esc(o.name)}</h4><span class="small muted sum">${esc(o.tagline)}</span><div class="meta"><span><b style="color:var(--text)">${moneyR(orgRaised(o.id))}</b> raised</span><span>${plural(n, 'campaign')}</span></div></div></a>`;
+  const n = S.campaigns.filter(c => c.orgId === o.id && !c.parentId && isPublicCamp(c)).length; const ds = paidDons().filter(d => d.orgId === o.id);
+  return `<a class="ccard" href="#/o/${o.slug}"><div class="ccard-media">${coverSVG(o.id.charCodeAt(1) * 7, o.cause, 0, PLACE_BY_CAUSE[o.cause])}<div class="ccard-top"><span class="glass">${SHIELD_S}Verified</span><span class="glass dark">${esc(o.cause)}</span></div><div class="ccard-over"><small>${esc(o.city)}, ${o.state}</small><h3>${esc(o.name)}</h3></div></div>
+  <div class="ccard-body"><p class="sum">${esc(o.tagline)}</p><div class="amt"><b>${moneyR(orgRaised(o.id))}</b><span>raised through ACF</span></div><div class="ccard-foot">${donorStack(ds, ds.length)}<span class="give-chip">${plural(n, 'campaign')} ${ARROW}</span></div></div></a>`;
 }
 function campCard(c) {
   const o = org(c.orgId); const raised = raisedFor(c); const sup = c.parentId ? userById(c.supporterId) : null; const n = donCount(c);
   const days = c.end ? Math.ceil((c.end - now()) / DAY) : null; const p = pct(raised, c.target);
-  return `<a class="card" href="#/c/${c.slug}"><div class="cover">${coverSVG(c.id.length * 13 + c.id.charCodeAt(1) * 3 + (c.parentId ? 5 : 0), o.cause, 0, c.title)}${sup ? '' : verifiedTag()}</div><div class="body"><span class="kind">${sup ? `${esc(sup.name)} is fundraising for` : esc(o.name)}</span><h4>${esc(c.title)}</h4>${sup ? `<span class="small muted">${esc(o.name)}</span>` : `<span class="small muted sum">${esc(c.summary)}</span>`}
+  const ds = paidDons().filter(d => c.parentId ? d.childId === c.id : d.campaignId === c.id);
+  const when = c.status === 'closed' ? 'Closed' : days != null ? (days > 0 ? plural(days, 'day') + ' left' : 'Last day') : 'Ongoing';
+  return `<a class="ccard" href="#/c/${c.slug}"><div class="ccard-media">${coverSVG(c.id.length * 13 + c.id.charCodeAt(1) * 3 + (c.parentId ? 5 : 0), o.cause, 0, PLACE_BY_CAUSE[o.cause])}<div class="ccard-top">${sup ? `<span class="glass">Supporter fundraiser</span>` : `<span class="glass">${SHIELD_S}Verified</span>`}<span class="glass dark">${when}</span></div><div class="ccard-over"><small>${sup ? `${esc(sup.name)} for ${esc(o.name)}` : esc(o.name)}</small><h3>${esc(c.title)}</h3></div></div>
+  <div class="ccard-body"><p class="sum">${esc(c.summary)}</p>
    <div class="progress" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100" aria-label="${p}% of goal raised"><i style="width:${p}%"></i></div>
-   <div class="raised"><span class="nw"><b>${moneyR(raised)}</b> <span class="muted">of ${moneyR(c.target)}</span></span><b>${p}%</b></div>
-   <div class="meta"><span>${plural(n, 'donor')}</span><span>${c.status === 'closed' ? 'Closed' : days != null ? (days > 0 ? plural(days, 'day') + ' left' : 'Last day') : 'Ongoing'}</span></div></div></a>`;
+   <div class="amt"><b>${moneyR(raised)} <span style="font-family:var(--body);font-weight:500">raised</span></b><span>${p}% of ${moneyR(c.target)}</span></div>
+   <div class="ccard-foot">${donorStack(ds, n)}<span class="give-chip">${c.status === 'active' ? 'Donate' : 'View'} ${ARROW}</span></div></div></a>`;
 }
+
+function pageHead({ kicker, title, lede, crumbs, actions }) {
+  return `<section class="phead"><div class="wrap">${crumbs ? `<nav class="crumbs" aria-label="Breadcrumb">${crumbs.map(([h, t], i) => h ? `<a href="${h}">${esc(t)}</a><span aria-hidden="true">/</span>` : `<span aria-current="page">${esc(t)}</span>`).join('')}</nav>` : ''}<div class="phead-row"><div>${kicker ? `<span class="kicker">${kicker}</span>` : ''}<h1>${title}</h1>${lede ? `<p class="lede">${lede}</p>` : ''}</div>${actions ? `<div class="row">${actions}</div>` : ''}</div></div></section>`;
+}
+const pageBody = (inner, narrow) => `<div class="wrap page${narrow ? ' narrow' : ''}">${inner}</div>`;
+function icard({ href, ic, tag, title, text, more, badgeHtml }) {
+  const tagName = href ? 'a' : 'div';
+  return `<${tagName} class="icard"${href ? ` href="${href}"` : ''}>${ic ? `<span class="ic">${icon(ic)}</span>` : ''}${badgeHtml || ''}${tag ? `<span class="small muted">${tag}</span>` : ''}<h3>${title}</h3>${text ? `<p>${text}</p>` : ''}${more ? `<span class="give-chip more">${more} ${ARROW}</span>` : ''}</${tagName}>`;
+}
+const RES_ICON = { 'Fundraising': 'campaigns', 'Supporter pages': 'orgs', 'Payouts': 'payouts', 'Donations': 'donations' };
 
 function viewPublic(R) {
   const [a, b] = R.parts;
@@ -909,40 +1434,99 @@ function viewPublic(R) {
   }
 }
 function vHome() {
-  const feat = S.campaigns.filter(c => isPublicCamp(c) && c.status === 'active' && !c.parentId).sort((x, y) => raisedFor(y) / y.target - raisedFor(x) / x.target).slice(0, 4);
+  const byPct = (x, y) => (raisedFor(y) / y.target) - (raisedFor(x) / x.target); const live = S.campaigns.filter(c => isPublicCamp(c) && c.status === 'active'); const feat = [...live.filter(c => !c.parentId).sort(byPct), ...live.filter(c => c.parentId).sort(byPct)];
   const open = S.programmes.filter(p => progStatus(p) !== 'closed');
   const amt = ui.heroAmt || 100; const fee = Math.round(amt * 100 * S.settings.feeRate / 100);
-  return `<section class="hero">${heroBg()}<div class="wrap"><div>
-    <span class="eyebrow">${icon('shield')}Every organisation is verified before it goes live</span>
-    <h1>Give to the local causes that hold Australian communities together.</h1>
-    <p class="lede">Support verified nonprofits across Australia, once or monthly, and see exactly where every dollar goes.</p>
-    <form class="searchbar" data-form="heroSearch" role="search">${icon('search')}<label class="sr" for="hq">Search causes</label><input id="hq" name="q" placeholder="Search by cause, town or organisation"><button class="btn btn-primary btn-sm">Search</button></form>
-    <div class="row"><a class="btn btn-donate" href="#/explore">Find a cause to support</a><a class="btn btn-ghost" href="#/register">Register your organisation</a></div>
-    <div class="trustline"><span>${icon('shield')}${plural(pubOrgs().length, 'verified organisation')}</span><span>${icon('lock')}Secure payments</span><span>${icon('mail')}Receipts sent instantly</span></div>
-  </div>
-  <div class="split-card" aria-labelledby="split-h"><h3 id="split-h">See where your gift goes</h3>
-    <label class="sr" for="heroAmt">Gift amount</label><div class="split-amount" id="split-amt">$${amt}</div>
-    <input id="heroAmt" type="range" min="10" max="1000" step="10" value="${amt}" data-input="heroAmt" aria-valuetext="$${amt}">
-    <div class="split-bar" aria-hidden="true"><i class="a" style="width:96%"></i><i class="b" style="width:4%"></i></div>
-    <div class="split-legend"><div><span class="dot" style="background:var(--teal)"></span>To the organisation<b id="split-a">${money(amt * 100 - fee)}</b></div><div style="text-align:right"><span class="dot" style="background:var(--wattle)"></span>Kept by ACF<b id="split-b">${money(fee)}</b></div></div>
-    <p class="small" style="margin:.9rem 0 0">ACF keeps 4% to verify organisations, process gifts and run payouts. Nothing is hidden on your receipt.</p></div></div></section>
-  <section class="wrap"><div class="paths">
-    <a class="path" href="#/explore"><span class="ic">${icon('heart')}</span><div><h3>I want to give</h3><p>Find a verified organisation or campaign and donate in about two minutes.</p></div><span class="go">Explore causes</span></a>
-    <a class="path" href="#/register"><span class="ic">${icon('building')}</span><div><h3>I represent an organisation</h3><p>Register, get verified by ACF and start receiving donations.</p></div><span class="go">Get started</span></a></div></section>
-  <section class="section"><div class="wrap"><div class="section-head"><h2>Browse by cause</h2></div><div class="cause-strip">${CAUSES.map(c => `<a class="cause-tile" href="#/explore?cause=${encodeURIComponent(c)}">${causeIcon(c)}${c}</a>`).join('')}</div></div></section>
-  <section class="section" style="padding-top:0"><div class="wrap"><div class="section-head"><div><h2>Close to their goal</h2><p class="muted">A final push will get these campaigns over the line.</p></div><a class="btn-link" href="#/explore?type=campaign">See all campaigns</a></div><div class="cards">${feat.map(campCard).join('')}</div></div></section>
-  <section class="section band"><div class="wrap"><h2>How giving through ACF works</h2><p class="muted">Four steps, with full visibility at each one.</p><div class="steps" style="margin-top:2.2rem">
-    <div><h4>Choose a cause</h4><p class="small muted">Search verified organisations, their campaigns and the supporters raising money for them.</p></div>
-    <div><h4>Give once or monthly</h4><p class="small muted">Pay by card, digital wallet, bank transfer or direct debit. No account needed.</p></div>
-    <div><h4>ACF receipts and allocates</h4><p class="small muted">Your receipt arrives by email and the gift is allocated to the organisation you chose.</p></div>
-    <div><h4>Funds are paid out</h4><p class="small muted">Verified organisations receive regular payouts with a statement listing every gift.</p></div></div></div></section>
-  <section class="section"><div class="wrap"><div class="section-head"><h2>From the organisations we support</h2></div><div class="grid2" style="gap:1.2rem">
-    <figure class="quote" style="margin:0"><p>\u201cDonors can see exactly what reaches us, and that trust shows. Half our new mentors heard about us from someone who gave.\u201d</p><div class="person">${avatar('Mia Chen')}<div><b>Mia Chen</b><small>Chair, Saltwater Youth Mentoring</small></div></div></figure>
-    <figure class="quote" style="margin:0"><p>\u201cThe fortnightly payouts mean we can plan our produce orders. We stopped worrying about cash flow every winter.\u201d</p><div class="person">${avatar('Ben Okafor')}<div><b>Ben Okafor</b><small>Coordinator, Riverbend Community Pantry</small></div></div></figure></div><p class="tiny muted" style="margin-top:.8rem">Sample testimonials for the prototype. ACF will supply approved quotes.</p></div></section>
-  <section class="section band"><div class="wrap two-col" style="align-items:start"><div><h2>Run your fundraising through ACF</h2><p>Register once, get verified, and run as many campaigns as you need. Invite supporters to fundraise for you, record offline gifts and track every payout in one place.</p><ol class="small" style="padding-left:1.1rem;line-height:2"><li>Create your account and organisation profile</li><li>Add authorised contacts and bank details</li><li>Submit for ACF review</li><li>Publish your page and start fundraising</li></ol><a class="btn btn-primary" href="#/register">Register your organisation</a></div>
-    <div class="panel"><h3>Grant opportunities</h3>${open.map(p => `<a href="#/grants/${p.id}" style="display:block;text-decoration:none;padding:.8rem 0;border-bottom:1px solid var(--line)"><b>${esc(p.title)}</b><div class="small muted">${progStatus(p) === 'open' ? 'Applications close ' + fmtD(p.closes) : 'Opens ' + fmtD(p.opens)}. Up to ${moneyR(p.max)}.</div></a>`).join('')}<a class="btn-link" style="display:inline-block;margin-top:.9rem" href="#/grants">All grant programmes</a></div></div></section>
-  <section class="section"><div class="wrap"><div class="section-head"><h2>Resources and support</h2><a class="btn-link" href="#/resources">All resources</a></div><div class="grid3">${S.content.resources.slice(0, 3).map(r => `<a class="panel" href="#/resources/${r.id}"><span class="small muted">${esc(r.tag)}</span><h3 style="margin-top:.35rem">${esc(r.title)}</h3><p class="small muted" style="margin:0">${esc(r.body)}</p></a>`).join('')}</div></div></section>`;
+  const total = sum(paidDons().filter(d => d.orgId !== 'ACF'), net);
+  const CLOCK = icon('audit'), STEPS = [
+    { t: 'Choose a cause you care about', d: 'Search verified organisations, their campaigns and the people fundraising for them. Every page shows who runs it and how the money is used.', when: 'About two minutes', mini: `<div class="mini"><div class="mini-search">${icon('search')}youth mentoring Newcastle</div><div class="mini-row"><span>Saltwater Youth Mentoring</span><span class="glass soft">${SHIELD_S}Verified</span></div><div class="mini-row"><span>Mentors for 100 Teens</span><span class="muted">30% funded</span></div></div>` },
+    { t: 'Give once or every month', d: 'Pick an amount and see what it does. Pay by card, digital wallet, bank transfer or direct debit, with no account needed.', when: 'Secure checkout', mini: `<div class="mini"><div class="mini-amts"><span>$25</span><span class="on">$50</span><span>$100</span></div><div class="mini-row" style="margin-top:.5rem"><span>${icon('heart')}Screens and inducts one new mentor</span><span class="muted">Monthly</span></div></div>` },
+    { t: 'ACF receipts and allocates your gift', d: 'Your receipt arrives by email straight away. ACF keeps 4% to run the platform and records the rest against the organisation you chose.', when: 'Instant', mini: `<div class="mini"><div class="mini-row"><span>${icon('mail')}Receipt R5212 sent</span><b>$50.00</b></div><div class="split-bar" style="height:10px;margin:.7rem 0 .3rem"><i class="a" style="width:96%"></i><i class="b" style="width:4%"></i></div><div class="row small" style="justify-content:space-between"><span>$48.00 to the organisation</span><span class="muted">$2.00 ACF</span></div></div>` },
+    { t: 'Funds reach the organisation', d: 'Verified organisations are paid out on a regular cycle, with a statement listing every gift, so they can plan with confidence.', when: 'Every fortnight', mini: `<div class="mini"><div class="mini-row"><span>${icon('payouts')}Payout PO-031</span><b>$4,270.80</b></div><div class="mini-row"><span class="muted">30 gifts included</span><span class="badge b-ok">Settled</span></div></div>` },
+  ];
+  const slides = live.filter(c => !c.parentId).sort(byPct).slice(0, 5); const TK = ['golden', 'morning', 'dusk', 'golden', 'morning'];
+  const PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+  const hx = `<section class="hx" data-hx aria-roledescription="carousel" aria-label="Featured campaigns"><h1 class="sr">Australia Cares Foundation. Give to verified local causes and follow every dollar.</h1>
+   <div class="hx-slides" aria-live="off">${slides.map((c, i) => { const o = org(c.orgId); const raised = raisedFor(c), p = pct(raised, c.target), n = donCount(c); const days = c.end ? Math.ceil((c.end - now()) / DAY) : null; const lead = o.contacts[0]; const ds = paidDons().filter(d => d.campaignId === c.id);
+     return `<div class="hx-slide ${i === 0 ? 'on' : ''}" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${slides.length}: ${esc(c.title)}" ${i ? 'aria-hidden="true"' : ''}>
+      <div class="hx-media">${landscapeSVG(c.id.length * 13 + c.id.charCodeAt(1) * 3, SCENE_BY_CAUSE[o.cause] || 'river', 1, PLACE_BY_CAUSE[o.cause], TK[i % TK.length])}</div><div class="hx-shade"></div>
+      <div class="wrap hx-content">
+       <div class="hx-tags"><span class="glass">${SHIELD_S}Verified by ACF</span><span class="glass dark">${esc(o.cause)}</span><span class="glass dark">${esc(o.city)}, ${o.state}</span></div>
+       <h2 class="hx-title">${esc(c.title)}</h2>
+       <p class="hx-sum">${esc(c.summary)}</p>
+       <div class="hx-prog"><div class="hx-amt"><b>${moneyR(raised)}</b><span>raised of ${moneyR(c.target)}</span><em>${p}%</em></div><div class="hx-bar" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100" aria-label="${p}% of goal raised"><i style="--w:${p}%"></i></div>
+        <div class="hx-meta">${donorStack(ds, n).replace('<small>', '<small style="color:#DCE5EF">')}<span>${days != null ? plural(Math.max(days, 0), 'day') + ' left' : 'Ongoing'}</span></div></div>
+       <div class="hx-cta"><a class="btn btn-donate" href="#/donate?o=${o.id}&c=${c.id}">Donate to this campaign</a><a class="btn hx-ghost" href="#/c/${c.slug}">Read their story</a>${lead ? `<span class="hx-by">${avatar(lead.name, 30)}<span>Organised by <b>${esc(lead.name)}</b><br>${esc(o.name)}</span></span>` : ''}</div>
+      </div><span class="hx-place">${icon('site')}${esc(PLACE_BY_CAUSE[o.cause])}</span></div>`; }).join('')}</div>
+   <div class="hx-top"><div class="wrap"><p class="hx-claim">${icon('shield')}Verified local causes. Every dollar tracked from your card to their bank.</p>
+    <div class="hx-ctrl"><span class="hx-count" aria-hidden="true"><b data-hx-n>01</b> / ${String(slides.length).padStart(2, '0')}</span><button class="hx-btn" data-act="hxPause" aria-label="Pause slideshow" data-hx-pause><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button><button class="hx-btn" data-act="hxStep" data-d="-1" aria-label="Previous campaign">${PREV}</button><button class="hx-btn" data-act="hxStep" data-d="1" aria-label="Next campaign">${ARROW}</button></div></div></div>
+   <div class="hx-tabs"><div class="wrap" role="tablist" aria-label="Choose a featured campaign" style="--n:${slides.length}">${slides.map((c, i) => `<button role="tab" class="hx-tab ${i === 0 ? 'on' : ''}" aria-selected="${i === 0}" data-act="hxGo" data-i="${i}"><span class="hx-line"><i></i></span><small>${String(i + 1).padStart(2, '0')}</small><b>${esc(c.title)}</b><span>${esc(org(c.orgId).name)}</span></button>`).join('')}</div></div>
+  </section>`;
+  return `${hx}
+  <div class="wrap"><div class="hero-stats"><div><b>${moneyR(total)}</b><span>raised for local causes</span></div><div><b>${pubOrgs().length}</b><span>verified organisations</span></div><div><b>96c</b><span>of every dollar reaches the cause</span></div><div><b>Fortnightly</b><span>payouts with full statements</span></div></div><p class="tiny muted" style="margin:.6rem 0 0">Totals come from the prototype's sample data.</p></div>
+
+  <section class="section"><div class="wrap"><div class="slider" data-slider>
+    <div class="sec-head"><div><span class="kicker">More campaigns</span><h2>Campaigns that need you now</h2><p>Closest to their goal first, including people fundraising for the causes they love.</p></div><div class="slider-ctrl"><a class="btn-link" href="#/explore?type=campaign" style="margin-right:.6rem">See all</a><button class="sbtn" data-act="slide" data-dir="-1" aria-label="Previous campaigns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button class="sbtn" data-act="slide" data-dir="1" aria-label="Next campaigns">${ARROW}</button></div></div>
+    <div class="track" tabindex="0" aria-label="Featured campaigns, scroll sideways or use the arrow buttons">${feat.map(campCard).join('')}</div>
+    <div class="sdots" role="tablist" aria-label="Choose a page of campaigns"></div></div>
+    <div class="row cause-row" style="margin-top:2.4rem;gap:.55rem"><span class="small muted" style="margin-right:.3rem">Or browse by cause:</span>${CAUSES.map(c => `<a class="cause-tile" href="#/explore?cause=${encodeURIComponent(c)}">${causeIcon(c)}${c}</a>`).join('')}</div></div></section>
+
+  <section class="how" id="how"><div class="how-bg" aria-hidden="true"><div class="how-bg-in">${ausMap()}</div></div><div class="wrap"><div class="how-head reveal"><span class="kicker">How giving through ACF works</span><h2>From your gift to their bank account</h2><p>Four steps, each one tracked and visible to you, the organisation and ACF.</p></div>
+   <div class="tl" data-tl><div class="tl-line" aria-hidden="true"><i></i></div>
+   ${STEPS.map((st, i) => `<div class="tl-item ${i % 2 ? 'right' : 'left'}"><div class="tl-dot" aria-hidden="true">${i + 1}</div>
+     <div class="tl-card"><span class="small muted">Step ${i + 1}</span><h3>${st.t}</h3><p>${st.d}</p>${st.mini}</div>
+     <div class="tl-side"><div class="tl-side-in"><div class="step">0${i + 1}</div><span class="when">${CLOCK}${st.when}</span></div></div></div>`).join('')}
+   </div></div></section>
+
+  <section class="section"><div class="wrap calc"><div class="reveal"><span class="kicker">Transparent by design</span><h2>See exactly where your gift goes</h2><p class="muted" style="font-size:1.1rem">Move the slider to see the split. Nothing is hidden on your receipt or on the organisation's statement.</p>
+     <ul class="facts"><li><span class="fi">${icon('shield')}</span><div><b>Every organisation is checked</b><span class="muted">Identity, bank details and two authorised contacts before any payout.</span></div></li><li><span class="fi">${icon('payouts')}</span><div><b>Paid out on a regular cycle</b><span class="muted">Organisations receive a statement listing every gift included.</span></div></li><li><span class="fi">${icon('mail')}</span><div><b>Receipts by email</b><span class="muted">Sent as soon as your payment is confirmed.</span></div></li></ul></div>
+    <div class="calc-card reveal" aria-labelledby="split-h"><h3 id="split-h" style="color:var(--muted);font-size:1rem;font-weight:600;margin-bottom:.4rem">If you give</h3><div class="big" id="split-amt">$${amt}</div>
+     <label class="sr" for="heroAmt">Gift amount</label><input id="heroAmt" type="range" min="10" max="1000" step="10" value="${amt}" data-input="heroAmt" aria-valuetext="$${amt}" style="margin-top:1rem">
+     <div class="split-bar" aria-hidden="true"><i class="a" style="width:96%"></i><i class="b" style="width:4%"></i></div>
+     <ul class="calc-list"><li><span><span class="dot" style="background:var(--teal)"></span>Goes to the organisation</span><b id="split-a">${money(amt * 100 - fee)}</b></li><li><span><span class="dot" style="background:var(--wattle)"></span>Kept by ACF to run the platform</span><b id="split-b">${money(fee)}</b></li><li><span class="muted">Payment processing</span><span class="muted">Shown separately</span></li></ul></div></div></section>
+
+  <section class="section" style="padding-top:1rem"><div class="wrap"><div class="sec-head"><div><span class="kicker">In their words</span><h2>From the organisations we support</h2></div></div><div class="stories">
+    <figure class="story reveal"><div class="story-media">${coverSVG(14, 'Youth', 0, PLACE_BY_CAUSE.Youth)}</div><blockquote><p>\u201cDonors can see exactly what reaches us, and that trust shows. Half our new mentors heard about us from someone who gave.\u201d</p><div class="person">${avatar('Mia Chen')}<div><b>Mia Chen</b><small>Chair, Saltwater Youth Mentoring</small></div></div></blockquote></figure>
+    <figure class="story reveal"><div class="story-media">${coverSVG(30, 'Food relief', 0, PLACE_BY_CAUSE['Food relief'])}</div><blockquote><p>\u201cThe fortnightly payouts mean we can plan our produce orders. We stopped worrying about cash flow every winter.\u201d</p><div class="person">${avatar('Ben Okafor')}<div><b>Ben Okafor</b><small>Coordinator, Riverbend Community Pantry</small></div></div></blockquote></figure></div><p class="tiny muted" style="margin-top:.8rem">Sample testimonials for the prototype. ACF will supply approved quotes.</p></div></section>
+
+  <section class="band-navy"><div class="wrap"><div class="two-col" style="align-items:start"><div class="reveal"><span class="kicker" style="color:#F3CF8B">For organisations</span><h2>Run your fundraising through ACF</h2><p style="font-size:1.1rem;max-width:52ch">Register once, get verified, and run as many campaigns as you need, with supporter fundraising, offline gifts and payouts in one place.</p>
+     <div class="benefits"><div><b>Verified once</b>Identity, bank and contacts checked by ACF before you go live.</div><div><b>Supporters fundraise for you</b>Invite people to build their own pages under your campaign.</div><div><b>Clear payouts</b>Regular payouts with a statement for every gift.</div></div>
+     <div class="row"><a class="btn btn-donate" href="#/register">Register your organisation</a><a class="btn btn-ghost" href="#/fundraise">How it works for organisations</a></div></div>
+    <div class="panel reveal" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#DCE6F1"><h3 style="color:#fff">Grant opportunities</h3>${open.map(p => `<a href="#/grants/${p.id}" style="display:block;text-decoration:none;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.12)"><b style="color:#fff">${esc(p.title)}</b><div class="small" style="color:#A9BCD0">${progStatus(p) === 'open' ? 'Applications close ' + fmtD(p.closes) : 'Opens ' + fmtD(p.opens)}. Up to ${moneyR(p.max)}.</div></a>`).join('')}<a class="btn-link" style="display:inline-block;margin-top:.9rem;color:#F3CF8B" href="#/grants">All grant programmes</a></div></div></div></section>
+
+  <section class="section"><div class="wrap"><div class="sec-head"><div><span class="kicker">Resources</span><h2>Guides for fundraisers and organisations</h2></div><a class="btn-link" href="#/resources">All resources</a></div><div class="grid3">${S.content.resources.slice(0, 3).map(r => icard({ href: '#/resources/' + r.id, ic: RES_ICON[r.tag] || 'content', tag: esc(r.tag), title: esc(r.title), text: esc(r.body), more: 'Read guide' })).join('')}</div></div></section>`;
 }
+function qdState(live) {
+  const opts = live.filter(c => !c.parentId);
+  if (!ui.qd || (ui.qd.cid !== 'ACF' && !opts.some(c => c.id === ui.qd.cid))) ui.qd = { cid: opts[0]?.id || 'ACF', amt: 5000, freq: 'once' };
+  return ui.qd;
+}
+function qdImage(q) {
+  const c = q.cid === 'ACF' ? null : camp(q.cid); const o = c ? org(c.orgId) : null; const cause = o ? o.cause : 'Community';
+  const last = c ? paidDons().filter(d => d.campaignId === c.id).slice(-1)[0] : null;
+  return `${landscapeSVG(c ? c.id.length * 13 + c.id.charCodeAt(1) * 3 : 41, SCENE_BY_CAUSE[cause] || 'river', 0, PLACE_BY_CAUSE[cause], 'golden')}
+   ${last ? `<span class="glass hero-chip">${avatar(last.anonymous ? 'Anonymous' : last.first + ' ' + last.last, 22)}${esc(donorName(last, true))} gave ${moneyR(last.base)}, ${ago(last.createdAt)}</span>` : ''}
+   <span class="hero-cap">${icon('site')}${esc(PLACE_BY_CAUSE[cause])}</span>`;
+}
+function qdHTML(q, live) {
+  const opts = live.filter(c => !c.parentId); const c = q.cid === 'ACF' ? null : camp(q.cid); const o = c ? org(c.orgId) : null;
+  const presets = c ? c.presets.slice(0, 4) : [2500, 5000, 10000, 25000]; const monthlyOK = !c || c.monthly;
+  if (!presets.includes(q.amt)) q.amt = presets[1] || presets[0]; if (!monthlyOK) q.freq = 'once';
+  const href = c ? `#/donate?o=${c.orgId}&c=${c.id}&a=${q.amt / 100}&f=${q.freq}` : `#/donate?o=ACF&a=${q.amt / 100}&f=${q.freq}`;
+  const p = c ? pct(raisedFor(c), c.target) : 0;
+  return `<div class="qd-head"><b>Quick give</b>${testMode()}</div>
+   <label class="sr" for="qd-camp">Give to</label><select id="qd-camp" data-change="qdCamp" style="margin-top:.75rem">${opts.map(x => `<option value="${x.id}" ${x.id === q.cid ? 'selected' : ''}>${esc(x.title)}</option>`).join('')}<option value="ACF" ${q.cid === 'ACF' ? 'selected' : ''}>Where it's needed most (ACF)</option></select>
+   ${c ? `<div class="qd-meta"><span>${esc(o.name)}</span><span>${p}% funded</span></div><div class="progress" style="margin:.35rem 0 0"><i style="width:${p}%"></i></div>` : `<div class="qd-meta"><span>Supports the foundation's work</span></div>`}
+   <div class="seg qd-seg" role="radiogroup" aria-label="How often">${[['once', 'One-off'], ['monthly', 'Monthly']].map(([v, t]) => `<button role="radio" aria-checked="${q.freq === v}" class="${q.freq === v ? 'on' : ''}" data-act="qdFreq" data-v="${v}" ${v === 'monthly' && !monthlyOK ? 'disabled title="This campaign takes one-off gifts"' : ''}>${t}</button>`).join('')}</div>
+   <div class="qd-amts">${presets.map(a => `<button class="${a === q.amt ? 'on' : ''}" aria-pressed="${a === q.amt}" data-act="qdAmt" data-v="${a}">${moneyR(a)}</button>`).join('')}</div>
+   <div class="qd-impact">${icon('heart')}<span>${c ? esc(impactFor(o.cause, q.amt)) : 'Helps ACF verify organisations and keep payouts accurate'}${q.freq === 'monthly' ? ', every month' : ''}.</span></div>
+   <a class="btn btn-donate" style="width:100%" href="${href}">Donate ${moneyR(q.amt)}${q.freq === 'monthly' ? ' a month' : ''}</a>
+   <div class="qd-foot">${icon('lock')}Secure checkout. Receipt by email.</div>`;
+}
+function qdRefresh(imgToo) { const live = S.campaigns.filter(c => isPublicCamp(c) && c.status === 'active'); const q = qdState(live); const box = $('#qd'); if (box) box.innerHTML = qdHTML(q, live); if (imgToo) { const im = $('#hero-img'); if (im) { im.classList.add('swap'); setTimeout(() => { im.innerHTML = qdImage(q); im.classList.remove('swap'); }, 180); } } }
+ACT.qdAmt = el => { ui.qd.amt = +el.dataset.v; qdRefresh(); $('#qd [data-act="qdAmt"].on')?.focus(); };
+ACT.qdFreq = el => { ui.qd.freq = el.dataset.v; qdRefresh(); };
+CHG.qdCamp = el => { ui.qd.cid = el.value; qdRefresh(true); $('#qd select')?.focus(); };
 INP.heroAmt = el => { const v = +el.value; ui.heroAmt = v; $('#split-amt').textContent = '$' + v; $('#split-a').textContent = money(v * 100 - Math.round(v * 100 * S.settings.feeRate / 100)); $('#split-b').textContent = money(Math.round(v * 100 * S.settings.feeRate / 100)); el.setAttribute('aria-valuetext', '$' + v); };
 FORM.heroSearch = d => nav('#/explore?q=' + encodeURIComponent(d.q || ''));
 
@@ -956,8 +1540,8 @@ function vExplore(R) {
   items.sort(S2[sort]);
   const p = (k, v) => { const n = new URLSearchParams(R.q); v ? n.set(k, v) : n.delete(k); return '#/explore?' + n.toString(); };
   const active = q || type !== 'all' || cause || st || showClosed;
-  return `<div class="wrap section"><h1>Explore causes</h1><p class="muted">Search verified organisations, their campaigns and the supporter pages raising money for them.</p>
-  <form class="toolbar" data-form="explore" role="search" style="margin-top:1.2rem"><label class="sr" for="eq">Search</label><input id="eq" name="q" value="${esc(q)}" placeholder="Search" style="min-width:220px">
+  return `${pageHead({ kicker: 'Donate', title: 'Explore causes', lede: 'Search verified organisations, their campaigns and the supporters raising money for them.' })}<div class="wrap page">
+  <form class="toolbar" data-form="explore" role="search"><label class="sr" for="eq">Search</label><input id="eq" name="q" value="${esc(q)}" placeholder="Search" style="min-width:220px">
    <label class="sr" for="ecause">Cause</label><select id="ecause" name="cause"><option value="">All causes</option>${CAUSES.map(c => `<option ${c === cause ? 'selected' : ''}>${c}</option>`).join('')}</select>
    <label class="sr" for="estate">State</label><select id="estate" name="state"><option value="">All states</option>${STATES.map(c => `<option ${c === st ? 'selected' : ''}>${c}</option>`).join('')}</select>
    <label class="sr" for="esort">Sort</label><select id="esort" name="sort">${[['raised', 'Most raised'], ['new', 'Newest'], ['ending', 'Ending soon'], ['az', 'A to Z']].map(([v, t]) => `<option value="${v}" ${v === sort ? 'selected' : ''}>${t}</option>`).join('')}</select>
@@ -1030,20 +1614,22 @@ function vCampaignPage(slug) {
   ${open ? `<div class="mobile-cta"><div><b>${moneyR(raised)}</b><div class="tiny muted">${p}% of ${moneyR(c.target)}</div></div><a class="btn btn-donate" href="${dHref()}">Donate now</a></div>` : ''}`;
 }
 function vGiveACF() {
-  return `<div class="wrap section two-col"><div><h1 style="font-size:2.5rem">Give to Australia Cares Foundation</h1><p style="font-size:1.12rem">Gifts to ACF itself fund the work behind the platform: verifying organisations, supporting fundraisers, running grant programmes and keeping payouts accurate.</p><p class="muted">Foundation gifts are recorded separately from gifts to organisations. They are not paid out to any external organisation.</p></div>
-  <aside class="panel"><h3>Support the foundation</h3><p class="small muted">Choose an amount on the next screen.</p><a class="btn btn-donate" style="width:100%" href="#/donate?o=ACF">Give to ACF</a></aside></div>`;
+  return pageHead({ kicker: 'Support the foundation', title: 'Give to Australia Cares Foundation', lede: 'Gifts to ACF fund the work behind the platform: verifying organisations, supporting fundraisers, running grant programmes and keeping payouts accurate.' }) +
+    pageBody(`<div class="two-col"><div><div class="grid2" style="gap:1rem">${icard({ ic: 'shield', title: 'Verification', text: 'Every organisation is checked before it can receive a single dollar.' })}${icard({ ic: 'payouts', title: 'Accurate payouts', text: 'Regular payouts with a statement listing every gift.' })}${icard({ ic: 'grants', title: 'Grant programmes', text: 'Competitive grants for regional and community projects.' })}${icard({ ic: 'support', title: 'Help for fundraisers', text: 'Guides and support for organisations and their supporters.' })}</div><p class="small muted" style="margin-top:1.2rem">Foundation gifts are recorded separately from gifts to organisations and are never paid out to an external organisation.</p></div>
+    <aside class="sticky-side"><div class="panel"><h3>Support the foundation</h3><p class="small muted">Choose your amount on the next screen.</p><a class="btn btn-donate" style="width:100%" href="#/donate?o=ACF">Give to ACF</a>${secureRow()}</div></aside></div>`);
 }
 
 /* ===== checkout DON01-03 ===== */
 function vCheckout(R) {
   const oid = R.q.get('o'); const cid = R.q.get('c'); const sid = R.q.get('s');
-  const key = [oid, cid, sid].join('|');
-  if (!ui.co || ui.co.key !== key) { const u = user(); const c = cid ? camp(cid) : null; ui.co = { key, orgId: oid, campId: cid, childId: sid, step: 1, freq: 'once', amount: +(R.q.get('a') || 0) * 100 || (c ? c.presets[1] : 5000), custom: '', cover: !!(c ? c.costCover : true), first: u?.kind === 'donor' ? u.name.split(' ')[0] : '', last: u?.kind === 'donor' ? u.name.split(' ').slice(1).join(' ') : '', email: u?.kind === 'donor' ? u.email : '', company: '', anon: false, marketing: false, message: '', method: 'card', attempt: null }; }
+  const key = [oid, cid, sid, R.q.get('a'), R.q.get('f')].join('|');
+  if (!ui.co || ui.co.key !== key) { const u = user(); const c = cid ? camp(cid) : null; ui.co = { key, orgId: oid, campId: cid, childId: sid, step: 1, freq: R.q.get('f') === 'monthly' ? 'monthly' : 'once', amount: +(R.q.get('a') || 0) * 100 || (c ? c.presets[1] : 5000), custom: '', cover: !!(c ? c.costCover : true), first: u?.kind === 'donor' ? u.name.split(' ')[0] : '', last: u?.kind === 'donor' ? u.name.split(' ').slice(1).join(' ') : '', email: u?.kind === 'donor' ? u.email : '', company: '', anon: false, marketing: false, message: '', method: 'card', attempt: null }; }
   const co = ui.co; const isACFgift = oid === 'ACF';
   const o = isACFgift ? null : org(oid); const c = cid ? camp(cid) : null; const s = sid ? camp(sid) : null;
   if (!isACFgift && (!o || o.status !== 'approved' || o.suspended)) return `<div class="wrap section">${empty('This organisation cannot take gifts right now', 'It may be under review or suspended.', '<a class="btn btn-ghost" href="#/explore">Explore causes</a>')}</div>`;
   if (c && c.status !== 'active') return `<div class="wrap section">${empty('This campaign is not taking gifts', 'It has closed or is not live yet.', `<a class="btn btn-ghost" href="#/donate?o=${oid}">Give to ${esc(o.name)} instead</a>`)}</div>`;
   const allowMonthly = isACFgift || !c || c.monthly; const allowCover = !isACFgift && (!c || c.costCover);
+  if (!allowMonthly && co.freq === 'monthly') co.freq = 'once';
   const cover = allowCover && co.cover ? Math.round(co.amount * S.settings.feeRate / 100) : 0;
   const fee = isACFgift ? co.amount + cover : Math.round(co.amount * S.settings.feeRate / 100);
   const alloc = isACFgift ? 0 : co.amount - fee + (S.settings.contribution === 'pass_through' ? cover : 0);
@@ -1135,30 +1721,62 @@ function receiptHTML(d) { return `<div class="receipt"><span class="wm">SAMPLE</
 ACT.dlReceipt = el => { const d = don(el.dataset.id); download(`ACF-sample-receipt-${d.ref}.html`, `<!doctype html><meta charset="utf-8"><title>Sample acknowledgement ${d.ref}</title><body style="font-family:sans-serif;max-width:560px;margin:40px auto"><h1 style="color:#B93A1F">SAMPLE ONLY</h1><h2>Australia Cares Foundation donation acknowledgement</h2><p>Not an official receipt. Tax treatment to be confirmed by ACF.</p><table cellpadding="6"><tr><td>Receipt</td><td>${d.receiptNo}</td></tr><tr><td>Reference</td><td>${d.ref}</td></tr><tr><td>Date</td><td>${fmtD(d.paidAt || d.createdAt)}</td></tr><tr><td>From</td><td>${esc(d.company || d.first + ' ' + d.last)}</td></tr><tr><td>Allocated to</td><td>${esc(orgName(d.orgId))}</td></tr><tr><td>Amount</td><td>${money(d.gross)} AUD</td></tr></table></body>`, 'Sample receipt'); };
 
 /* ===== information pages PUB07-08 ===== */
-function vAbout() { return `<div class="wrap section"><h1 style="font-size:2.6rem">About ACF</h1><p style="font-size:1.15rem">${esc(S.content.about)}</p><div class="callout info">Mission, team, partners and impact figures are placeholders until ACF supplies approved content.</div><div class="grid3" style="margin-top:2rem"><div class="panel"><h3>Our team</h3>${S.content.team.map(([r, n]) => `<p class="small"><b>${esc(r)}</b><br><span class="muted">${esc(n)}</span></p>`).join('')}</div><div class="panel"><h3>Partners</h3><p class="small muted">Approved partner logos and acknowledgements will appear here.</p></div><div class="panel"><h3>How we are funded</h3><p class="small">ACF keeps 4% of gifts made to organisations, plus any gifts made directly to the foundation.</p><a class="btn-link small" href="#/policies/giving">Read our giving and fees policy</a></div></div></div>`; }
+function vAbout() {
+  return pageHead({ kicker: 'About us', title: 'About Australia Cares Foundation', lede: esc(S.content.about) }) +
+    pageBody(`<div class="callout info" style="margin-top:0">Mission, team, partners and impact figures are placeholders until ACF supplies approved content.</div><div class="grid3" style="margin-top:1.4rem">${icard({ ic: 'orgs', title: 'Our team', text: S.content.team.map(([r, n]) => `<b>${esc(r)}</b><br><span>${esc(n)}</span>`).join('<br>') })}${icard({ ic: 'heart', title: 'Partners', text: 'Approved partner logos and acknowledgements will appear here.' })}${icard({ ic: 'payouts', title: 'How we are funded', text: 'ACF keeps 4% of gifts made to organisations, plus any gifts made directly to the foundation.', href: '#/policies/giving', more: 'Giving and fees policy' })}</div>`);
+}
 function vResources(R, id) {
-  if (id) { const r = S.content.resources.find(x => x.id === id); if (!r) return `<div class="wrap section">${empty('Article not found', '', '<a class="btn btn-ghost" href="#/resources">All resources</a>')}</div>`; return `<div class="wrap section" style="max-width:760px"><a class="btn-link small" href="#/resources">All resources</a><span class="badge b-info" style="margin-left:.6rem">${esc(r.tag)}</span><h1 style="font-size:2.3rem;margin-top:.8rem">${esc(r.title)}</h1><p style="font-size:1.1rem">${esc(r.body)}</p><p class="muted">Full article content to be supplied by ACF.</p></div>`; }
+  if (id) {
+    const r = S.content.resources.find(x => x.id === id);
+    if (!r) return pageHead({ title: 'Article not found', crumbs: [['#/resources', 'Resources'], [null, 'Not found']] }) + pageBody(`<div class="panel">${empty('This guide may have moved', '', '<a class="btn btn-ghost" href="#/resources">All resources</a>')}</div>`);
+    return pageHead({ crumbs: [['#/resources', 'Resources'], [null, r.title]], kicker: esc(r.tag), title: esc(r.title) }) + pageBody(`<p style="font-size:1.18rem">${esc(r.body)}</p><p class="muted">Full article content to be supplied by ACF.</p><a class="btn btn-ghost" href="#/resources">Back to all resources</a>`, true);
+  }
   const q = (R.q.get('q') || '').toLowerCase(); const list = S.content.resources.filter(r => !q || (r.title + r.body + r.tag).toLowerCase().includes(q));
-  return `<div class="wrap section"><h1 style="font-size:2.6rem">Resources</h1><form class="toolbar" data-form="resSearch" role="search"><label class="sr" for="rq">Search resources</label><input id="rq" name="q" value="${esc(R.q.get('q') || '')}" placeholder="Search guides"><button class="btn btn-primary btn-sm">Search</button>${q ? '<a class="btn-link small" href="#/resources">Clear</a>' : ''}</form>${list.length ? `<div class="grid3">${list.map(r => `<a class="panel" style="text-decoration:none" href="#/resources/${r.id}"><span class="badge b-info">${esc(r.tag)}</span><h4 style="margin-top:.6rem">${esc(r.title)}</h4><p class="small muted">${esc(r.body)}</p></a>`).join('')}</div>` : `<div class="panel">${empty('No guides match that search', 'Try a broader word.', '<a class="btn btn-ghost" href="#/resources">Show all</a>')}</div>`}<p style="margin-top:2rem"><a class="btn-link" href="#/faq">Frequently asked questions</a></p></div>`;
+  return pageHead({ kicker: 'Resources', title: 'Guides for fundraisers and organisations', lede: 'Practical help for running campaigns, supporter fundraising and payouts.' }) +
+    pageBody(`<form class="toolbar" data-form="resSearch" role="search"><label class="sr" for="rq">Search resources</label><input id="rq" name="q" value="${esc(R.q.get('q') || '')}" placeholder="Search guides"><button class="btn btn-primary btn-sm">Search</button>${q ? '<a class="btn-link small" href="#/resources">Clear</a>' : ''}</form>${list.length ? `<div class="grid3">${list.map(r => icard({ href: '#/resources/' + r.id, ic: RES_ICON[r.tag] || 'content', tag: esc(r.tag), title: esc(r.title), text: esc(r.body), more: 'Read guide' })).join('')}</div>` : `<div class="panel">${empty('No guides match that search', 'Try a broader word.', '<a class="btn btn-ghost" href="#/resources">Show all</a>')}</div>`}<p style="margin-top:2rem"><a class="btn-link" href="#/faq">Frequently asked questions</a></p>`);
 }
 FORM.resSearch = d => nav('#/resources?q=' + encodeURIComponent(d.q || ''));
-function vFaq() { return `<div class="wrap section" style="max-width:820px"><h1 style="font-size:2.6rem">Frequently asked questions</h1>${S.content.faqs.filter(f => f.published).map(f => `<details class="faq"><summary>${esc(f.q)}</summary><p style="margin-top:.6rem">${esc(f.a)}</p></details>`).join('')}<p style="margin-top:2rem">Still stuck? <a href="#/contact">Contact us</a></p></div>`; }
-function vContact() { return `<div class="wrap section two-col"><div><h1 style="font-size:2.6rem">Contact us</h1><p>Questions about a gift, a payout or registering your organisation. We reply within two business days.</p><form class="panel" data-form="contact" novalidate><label class="f">Your name<input name="name" autocomplete="name"></label><label class="f">Email<input name="email" type="email" autocomplete="email"></label><label class="f">Topic<select name="topic"><option value="">Choose a topic</option><option>A donation I made</option><option>Monthly giving</option><option>Registering an organisation</option><option>Payouts</option><option>Something else</option></select></label><label class="f">Donation reference (optional)<input name="ref" placeholder="ACF-10421"></label><label class="f">Message<textarea name="msg"></textarea></label><button class="btn btn-primary">Send message</button></form></div><aside class="panel"><h3>Other ways to reach us</h3><p class="small muted">Phone, postal address and office hours to be confirmed by ACF.</p></aside></div>`; }
+function vFaq() {
+  return pageHead({ kicker: 'Help', title: 'Frequently asked questions', lede: 'Answers about giving, receipts, payouts and registering an organisation.' }) +
+    pageBody(`<div class="panel" style="padding:.4rem 1.4rem">${S.content.faqs.filter(f => f.published).map(f => `<details class="faq"><summary>${esc(f.q)}</summary><p style="margin-top:.6rem">${esc(f.a)}</p></details>`).join('')}</div><div class="panel" style="margin-top:1.2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap"><div><h3 style="margin:0">Still have a question?</h3><p class="small muted" style="margin:0">The ACF team replies within two business days.</p></div><a class="btn btn-primary" href="#/contact">Contact us</a></div>`, true);
+}
+function vContact() {
+  return pageHead({ kicker: 'Contact', title: 'Contact us', lede: 'Questions about a gift, a payout or registering your organisation. We reply within two business days.' }) +
+    pageBody(`<div class="two-col"><form class="panel" data-form="contact" novalidate><div class="grid2"><label class="f">Your name<input name="name" autocomplete="name"></label><label class="f">Email<input name="email" type="email" autocomplete="email"></label></div><label class="f">Topic<select name="topic"><option value="">Choose a topic</option><option>A donation I made</option><option>Monthly giving</option><option>Registering an organisation</option><option>Payouts</option><option>Something else</option></select></label><label class="f">Donation reference (optional)<input name="ref" placeholder="ACF-10421"></label><label class="f">Message<textarea name="msg"></textarea></label><button class="btn btn-primary">Send message</button></form>
+    <aside>${icard({ ic: 'support', title: 'Other ways to reach us', text: 'Phone, postal address and office hours to be confirmed by ACF.' })}<div style="height:1rem"></div>${icard({ ic: 'content', title: 'Quick answers', text: 'Most questions about receipts and payouts are covered in our FAQs.', href: '#/faq', more: 'Read the FAQs' })}</aside></div>`);
+}
 FORM.contact = (d, f) => { if (!validate(f, [['name', v => v, 'Enter your name'], ['email', isEmail, 'Enter a valid email'], ['topic', v => v, 'Choose a topic'], ['msg', v => v.length >= 10, 'Write at least 10 characters so we can help']])) return; const dd = d.ref ? S.donations.find(x => x.ref === d.ref.trim()) : null; S.support.unshift({ id: uid('sr'), type: 'general', donationId: dd?.id || null, orgId: dd?.orgId || null, note: `${d.topic}: ${d.msg}`, from: d.name + ' <' + d.email + '>', status: 'open', createdAt: now(), refs: dd ? dd.ref : '' }); mail(d.email, 'Support received', 'We have your message', 'Thanks ' + d.name + '. Your request is with the ACF team.'); f.reset(); toast('Message sent. You will hear back within two business days.'); save(); };
-function vPolicy(p) { const P = { privacy: ['Privacy policy', 'How ACF collects, stores and uses personal information from donors, fundraisers and organisations.'], terms: ['Terms of use', 'The rules for using the ACF platform as a donor, supporter or organisation.'], giving: ['Giving and fees', 'ACF collects every donation centrally. For gifts to organisations, ACF keeps 4% of the gift amount. The rest is allocated to the organisation and paid out on the foundation\u2019s payout cycle. Gifts made directly to ACF fund the foundation. How payment processing costs and optional cost contributions are handled is being confirmed.'] }; const x = P[p] || P.privacy; return `<div class="wrap section" style="max-width:780px"><h1 style="font-size:2.5rem">${x[0]}</h1><div class="callout">Placeholder copy. Final wording must come from ACF and be approved before launch.</div><p style="font-size:1.08rem">${x[1]}</p><p class="muted small">Linked from checkout and the site footer.</p></div>`; }
-function vFundraise() { return `<div class="wrap section"><h1 style="font-size:2.6rem;max-width:18ch">Raise money for an organisation you believe in</h1><div class="grid2" style="margin-top:1.6rem;gap:1rem"><div class="panel"><h3>For organisations</h3><p>Register, get verified, and run campaigns with targets, stories and monthly giving. Invite supporters to fundraise for you.</p><a class="btn btn-primary" href="#/register">Register your organisation</a></div><div class="panel"><h3>For supporters</h3><p>Organisations invite supporters to create their own page under a campaign. Every dollar you raise goes to the organisation, not to you.</p><a class="btn btn-ghost" href="#/resources/r2">How supporter fundraising works</a></div></div></div>`; }
-function vLogin() { return `<div class="wrap section" style="max-width:560px"><h1 style="font-size:2.4rem">Log in</h1><form class="panel" data-form="login" novalidate><label class="f">Email<input name="email" type="email" autocomplete="email" placeholder="sarah.w@example.org.au"></label><label class="f">Password<span class="hint">Any password works in the prototype</span><input name="pw" type="password"></label><button class="btn btn-primary">Log in</button></form><p class="small muted" style="margin-top:1rem">You can also switch between sample people with the Viewing as menu at the top.</p></div>`; }
+function vPolicy(p) {
+  const P = { privacy: ['Privacy policy', 'How ACF collects, stores and uses personal information from donors, fundraisers and organisations.'], terms: ['Terms of use', 'The rules for using the ACF platform as a donor, supporter or organisation.'], giving: ['Giving and fees', 'ACF collects every donation centrally. For gifts to organisations, ACF keeps 4% of the gift amount. The rest is allocated to the organisation and paid out on the foundation\u2019s payout cycle. Gifts made directly to ACF fund the foundation. How payment processing costs and optional cost contributions are handled is being confirmed.'] }; const x = P[p] || P.privacy;
+  return pageHead({ kicker: 'Policies', title: x[0] }) + pageBody(`<div class="callout" style="margin-top:0">Placeholder copy. Final wording must come from ACF and be approved before launch.</div><p style="font-size:1.1rem">${x[1]}</p><p class="small muted">Linked from checkout and the site footer.</p><div class="row" style="margin-top:1.4rem">${['privacy', 'terms', 'giving'].filter(k => k !== p).map(k => `<a class="chip" href="#/policies/${k}">${P[k][0]}</a>`).join('')}</div>`, true);
+}
+function vFundraise() {
+  return pageHead({ kicker: 'Fundraise', title: 'Raise money for an organisation you believe in', lede: 'Organisations run campaigns on ACF. Supporters can be invited to fundraise on their behalf.' }) +
+    pageBody(`<div class="grid2" style="gap:1.2rem">${icard({ ic: 'building', title: 'For organisations', text: 'Register, get verified, and run campaigns with targets, stories and monthly giving. Invite supporters to fundraise for you.', href: '#/register', more: 'Register your organisation' })}${icard({ ic: 'heart', title: 'For supporters', text: 'Organisations invite supporters to create their own page under a campaign. Every dollar you raise goes to the organisation, not to you.', href: '#/resources/r2', more: 'How supporter fundraising works' })}</div>`);
+}
+function vLogin() {
+  return pageHead({ kicker: 'Welcome back', title: 'Log in', lede: 'Donors, organisations and supporters all log in here.' }) +
+    pageBody(`<form class="panel" data-form="login" novalidate style="max-width:520px"><label class="f">Email<input name="email" type="email" autocomplete="email" placeholder="sarah.w@example.org.au"></label><label class="f">Password<span class="hint">Any password works in the prototype</span><input name="pw" type="password"></label><button class="btn btn-primary" style="width:100%">Log in</button><p class="small muted" style="margin:1rem 0 0;text-align:center">New organisation? <a class="btn-link" href="#/register">Register here</a></p></form><p class="small muted" style="margin-top:1rem">You can also switch between sample people with the Viewing as menu at the top.</p>`, true);
+}
 FORM.login = (d, f) => { if (!validate(f, [['email', isEmail, 'Enter your email']])) return; const u = S.users.find(x => x.email.toLowerCase() === d.email.trim().toLowerCase()); if (!u) { validate(f, [['email', () => false, 'No account uses that email. Check it, or donate as a guest.']]); return; } switchTo(u.id); toast('Logged in as ' + u.name); };
 function progStatus(p) { return p.opens > now() ? 'upcoming' : p.closes < now() ? 'closed' : 'open'; }
-function vGrants() { return `<div class="wrap section"><h1 style="font-size:2.6rem">Grant programmes</h1><p class="muted" style="max-width:62ch">Competitive grants that ACF reviews and awards separately from everyday donations. Donations raised on the platform are paid out automatically and do not need an application.</p>${['open', 'upcoming', 'closed'].map(st => { const l = S.programmes.filter(p => progStatus(p) === st); return l.length ? `<h3 style="margin-top:1.6rem">${st[0].toUpperCase() + st.slice(1)}</h3><div class="grid3">${l.map(p => `<a class="panel" style="text-decoration:none" href="#/grants/${p.id}">${badge(st)}<h4 style="margin-top:.6rem">${esc(p.title)}</h4><p class="small muted">${esc(p.purpose)}</p><p class="small">Up to ${moneyR(p.max)}. ${st === 'upcoming' ? 'Opens ' + fmtD(p.opens) : 'Closes ' + fmtD(p.closes)}</p></a>`).join('')}</div>` : ''; }).join('')}</div>`; }
-function vGrant(id) { const p = S.programmes.find(x => x.id === id); if (!p) return `<div class="wrap section">${empty('Programme not found', '', '<a class="btn btn-ghost" href="#/grants">All grants</a>')}</div>`; const st = progStatus(p); const u = user(); return `<div class="wrap section two-col"><div><a class="btn-link small" href="#/grants">All grant programmes</a><h1 style="font-size:2.4rem;margin-top:.8rem">${esc(p.title)}</h1>${badge(st)}<h3 style="margin-top:1.4rem">Purpose</h3><p>${esc(p.purpose)}</p><h3>Who can apply</h3><p>${esc(p.eligibility)}</p><h3>How applications are assessed</h3><p>${esc(p.criteria)}</p><h3>Reporting</h3><p>${esc(p.reporting)}</p></div><aside class="panel"><div class="summary-line"><span>Opens</span><b>${fmtD(p.opens)}</b></div><div class="summary-line"><span>Closes</span><b>${fmtD(p.closes)}</b></div><div class="summary-line"><span>Maximum</span><b>${moneyR(p.max)}</b></div>${st === 'open' ? (u?.kind === 'org' ? `<a class="btn btn-primary" style="width:100%;margin-top:1rem" href="#/portal/apply/${p.id}">Start an application</a>` : `<p class="small muted" style="margin-top:1rem">Log in to your organisation portal to apply.</p><a class="btn btn-ghost" style="width:100%" href="#/login">Log in</a>`) : `<p class="small muted" style="margin-top:1rem">${st === 'upcoming' ? 'Applications open soon.' : 'This round has closed.'}</p>`}</aside></div>`; }
+function vGrants() {
+  return pageHead({ kicker: 'Grants', title: 'Grant programmes', lede: 'Competitive grants that ACF reviews and awards separately from everyday donations. Donations raised on the platform are paid out automatically and need no application.' }) +
+    pageBody(['open', 'upcoming', 'closed'].map(st => { const l = S.programmes.filter(p => progStatus(p) === st); return l.length ? `<h2 style="font-size:1.4rem;margin:${st === 'open' ? '0' : '2rem'} 0 1rem">${st[0].toUpperCase() + st.slice(1)}</h2><div class="grid3">${l.map(p => icard({ href: '#/grants/' + p.id, ic: 'grants', badgeHtml: `<span style="margin-bottom:.2rem">${badge(st)}</span>`, title: esc(p.title), text: esc(p.purpose), more: `Up to ${moneyR(p.max)}. ${st === 'upcoming' ? 'Opens ' + fmtD(p.opens) : 'Closes ' + fmtD(p.closes)}` })).join('')}</div>` : ''; }).join(''));
+}
+function vGrant(id) {
+  const p = S.programmes.find(x => x.id === id); if (!p) return pageHead({ title: 'Programme not found', crumbs: [['#/grants', 'Grant programmes'], [null, 'Not found']] }) + pageBody(`<div class="panel">${empty('This programme may have closed', '', '<a class="btn btn-ghost" href="#/grants">All grants</a>')}</div>`);
+  const st = progStatus(p); const u = user();
+  return pageHead({ crumbs: [['#/grants', 'Grant programmes'], [null, p.title]], kicker: badge(st), title: esc(p.title), lede: esc(p.purpose) }) +
+    pageBody(`<div class="two-col"><div><h3>Who can apply</h3><p>${esc(p.eligibility)}</p><h3>How applications are assessed</h3><p>${esc(p.criteria)}</p><h3>Reporting</h3><p>${esc(p.reporting)}</p></div><aside class="sticky-side"><div class="panel"><div class="summary-line"><span>Opens</span><b>${fmtD(p.opens)}</b></div><div class="summary-line"><span>Closes</span><b>${fmtD(p.closes)}</b></div><div class="summary-line"><span>Maximum</span><b>${moneyR(p.max)}</b></div>${st === 'open' ? (u?.kind === 'org' ? `<a class="btn btn-primary" style="width:100%;margin-top:1rem" href="#/portal/apply/${p.id}">Start an application</a>` : `<p class="small muted" style="margin-top:1rem">Log in to your organisation portal to apply.</p><a class="btn btn-ghost" style="width:100%" href="#/login">Log in</a>`) : `<p class="small muted" style="margin-top:1rem">${st === 'upcoming' ? 'Applications open soon.' : 'This round has closed.'}</p>`}</div></aside></div>`);
+}
 /* ===== ORG01 registration ===== */
 function vRegister() {
   const u = user();
-  if (u && u.kind === 'org') return `<div class="wrap section" style="max-width:640px"><h1 style="font-size:2.3rem">You already have an organisation account</h1><p>Continue your onboarding or manage your organisations in the portal.</p><a class="btn btn-primary" href="#/portal">Open the organisation portal</a></div>`;
-  return `<div class="wrap section two-col"><div><h1 style="font-size:2.5rem">Register your organisation</h1><p style="font-size:1.1rem">Create your login first. Then you'll complete a short checklist: organisation details, authorised contacts, verification, agreement, bank details and your public page. ACF reviews every organisation before its page goes live.</p>
-  <form class="panel" data-form="register" novalidate><label class="f">Your full name<input name="name" autocomplete="name"></label><label class="f">Work email<span class="hint">We'll send a verification link</span><input name="email" type="email" autocomplete="email"></label><label class="f">Password<span class="hint">At least 8 characters</span><input name="pw" type="password" autocomplete="new-password"></label><label class="check"><input type="checkbox" name="ok"><span>I'm authorised to register this organisation</span></label><button class="btn btn-primary">Create account</button></form></div>
-  <aside class="panel"><h3>What you'll need</h3><ul class="small" style="padding-left:1.1rem;line-height:1.9"><li>ABN and legal name</li><li>Charity or DGR details, if you have them</li><li>Two people who can act for the organisation</li><li>Bank account for payouts</li><li>A short story and cover image</li></ul><p class="small muted">Not having DGR status does not stop you applying. ACF's eligibility rules are being confirmed.</p></aside></div>`;
+  if (u && u.kind === 'org') return pageHead({ kicker: 'For organisations', title: 'You already have an organisation account', lede: 'Continue your onboarding or manage your organisations in the portal.' }) + pageBody(`<a class="btn btn-primary" href="#/portal">Open the organisation portal</a>`, true);
+  return pageHead({ kicker: 'For organisations', title: 'Register your organisation', lede: 'Create your login first. Then complete a short checklist covering your details, authorised contacts, verification, agreement, bank account and public page. ACF reviews every organisation before its page goes live.' }) +
+    pageBody(`<div class="two-col"><form class="panel" data-form="register" novalidate><h3>Create your login</h3><label class="f">Your full name<input name="name" autocomplete="name"></label><label class="f">Work email<span class="hint">We'll send a verification link</span><input name="email" type="email" autocomplete="email"></label><label class="f">Password<span class="hint">At least 8 characters</span><input name="pw" type="password" autocomplete="new-password"></label><label class="check"><input type="checkbox" name="ok"><span>I'm authorised to register this organisation</span></label><button class="btn btn-primary" style="margin-top:.6rem">Create account</button></form>
+    <aside class="panel"><h3>What you'll need</h3><ul class="facts" style="margin-top:.6rem">${[['building', 'ABN and legal name'], ['shield', 'Charity or DGR details, if you have them'], ['orgs', 'Two people who can act for the organisation'], ['payouts', 'A bank account for payouts'], ['content', 'A short story for your public page']].map(([i, t]) => `<li><span class="fi">${icon(i)}</span><div style="padding-top:.45rem">${t}</div></li>`).join('')}</ul><p class="small muted" style="margin-top:1rem">Not having DGR status does not stop you applying. ACF's eligibility rules are being confirmed.</p></aside></div>`);
 }
 FORM.register = (d, f) => {
   if (!validate(f, [['name', v => v.length > 1, 'Enter your name'], ['email', isEmail, 'Enter a valid email'], ['pw', v => v.length >= 8, 'Use at least 8 characters'], ['ok', v => v, 'Confirm you are authorised']])) return;
@@ -1172,12 +1790,12 @@ ACT.verifyEmail = el => { const u = userById(el.dataset.id); if (!u) return; u.e
 /* ===== P2P02 invitation acceptance ===== */
 function vInvite(id) {
   const inv = S.invitations.find(i => i.id === id);
-  if (!inv) return `<div class="wrap section">${empty('Invitation not found', 'Ask the organisation to send a new one.')}</div>`;
+  if (!inv) return pageHead({ kicker: 'Supporter invitation', title: 'Invitation not found', lede: 'Ask the organisation to send a new one.' }) + pageBody('', true);
   const c = camp(inv.campaignId), o = org(c.orgId);
-  if (inv.status === 'expired' || (inv.status === 'sent' && inv.expiresAt < now())) { inv.status = 'expired'; return `<div class="wrap section" style="max-width:640px"><h1 style="font-size:2.2rem">This invitation has expired</h1><p>Invitations last 14 days. Ask ${esc(o.name)} to resend it.</p></div>`; }
-  if (inv.status === 'revoked') return `<div class="wrap section" style="max-width:640px"><h1 style="font-size:2.2rem">This invitation is no longer active</h1><p>The organisation withdrew it.</p></div>`;
-  if (inv.status === 'accepted') return `<div class="wrap section" style="max-width:640px"><h1 style="font-size:2.2rem">Invitation already accepted</h1><a class="btn btn-primary" href="#/supporter">Go to my fundraising page</a></div>`;
-  return `<div class="wrap section" style="max-width:680px"><span class="badge b-y">Supporter invitation</span><h1 style="font-size:2.3rem;margin-top:.6rem">${esc(o.name)} invited you to fundraise for ${esc(c.title)}</h1><p>You'll get your own page with a target and story. Every dollar goes to ${esc(o.name)}. You won't receive or handle any money.</p>
+  if (inv.status === 'expired' || (inv.status === 'sent' && inv.expiresAt < now())) { inv.status = 'expired'; return pageHead({ kicker: 'Supporter invitation', title: 'This invitation has expired', lede: `Invitations last 14 days. Ask ${esc(o.name)} to resend it.` }) + pageBody('', true); }
+  if (inv.status === 'revoked') return pageHead({ kicker: 'Supporter invitation', title: 'This invitation is no longer active', lede: 'The organisation withdrew it.' }) + pageBody('', true);
+  if (inv.status === 'accepted') return pageHead({ kicker: 'Supporter invitation', title: 'Invitation already accepted' }) + pageBody('<a class="btn btn-primary" href="#/supporter">Go to my fundraising page</a>', true);
+  return pageHead({ kicker: 'Supporter invitation', title: `${esc(o.name)} invited you to fundraise for ${esc(c.title)}`, lede: `You'll get your own page with a target and story. Every dollar goes to ${esc(o.name)}. You won't receive or handle any money.` }) + `<div class="wrap page narrow">
   <form class="panel" data-form="acceptInvite" novalidate><input type="hidden" name="id" value="${inv.id}"><label class="f">Your name<input name="name" value="${esc(inv.name)}"></label><label class="f">Email<input name="email" type="email" value="${esc(inv.email)}" readonly></label><label class="f">Your fundraising target (AUD)<input name="target" inputmode="numeric" value="1000"></label><button class="btn btn-primary">Accept and create my page</button></form></div>`;
 }
 FORM.acceptInvite = (d, f) => {
@@ -1197,7 +1815,7 @@ ACT.openInvite = el => { closeLayer(); nav('#/invite/' + el.dataset.id); };
 /* ===== donor account DON04-06 ===== */
 function viewAccount(R) {
   const u = user();
-  if (!u || u.kind !== 'donor') return `<div class="wrap section">${denied('Log in as a donor to see your giving history.', '<a class="btn btn-primary" href="#/login">Log in</a>')}</div>`;
+  if (!u || u.kind !== 'donor') return pageHead({ kicker: 'Your account', title: 'My giving' }) + pageBody(denied('Log in as a donor to see your giving history.', '<a class="btn btn-primary" href="#/login">Log in</a>'));
   const tab = R.parts[1] || 'history';
   const sub = `<div class="tabs">${[['history', 'Giving history', '#/account'], ['recurring', 'Monthly gifts', '#/account/recurring'], ['profile', 'Profile and preferences', '#/account/profile']].map(([k, t, h]) => `<a href="${h}" class="${tab === k ? 'on' : ''}" ${tab === k ? 'aria-current="page"' : ''}>${t}</a>`).join('')}</div>`;
   let body = '';
@@ -1219,7 +1837,7 @@ function viewAccount(R) {
     <h3 style="margin-top:1.6rem">Your support requests</h3>${table([{ h: 'Date', f: s => fmtD(s.createdAt) }, { h: 'Request', f: s => esc(s.note) }, { h: 'Status', f: s => badge(s.status) }, { h: 'Outcome', f: s => esc(s.resolution || '') }], S.support.filter(s => s.donorUserId === u.id), { emptyTitle: 'No requests', emptyBody: '' })}`;
   }
   if (tab === 'profile') body = `<form class="panel" style="max-width:620px" data-form="donorProfile" novalidate><label class="f">Full name<input name="name" value="${esc(u.name)}"></label><label class="f">Email<input name="email" type="email" value="${esc(u.email)}"></label><label class="f">Phone (optional)<input name="phone" value="${esc(u.phone || '')}"></label><h4 style="margin-top:1rem">Communication preferences</h4><label class="check"><input type="checkbox" name="marketing" ${u.marketing ? 'checked' : ''}>Updates and stories from ACF</label><label class="check"><input type="checkbox" name="news" ${u.news ? 'checked' : ''}>Updates from organisations I support <span class="muted small">(subject to the disclosure policy)</span></label><p class="tiny muted">Receipts and payment notices are always sent.</p><button class="btn btn-primary">Save changes</button></form>`;
-  return `<div class="wrap section"><div class="row" style="justify-content:space-between"><h1 style="font-size:2.3rem">My giving</h1><a class="btn btn-donate" href="#/explore">Give again</a></div>${sub}${body}</div>`;
+  return pageHead({ kicker: 'Your account', title: 'My giving', lede: `Signed in as ${esc(u.name)}. Receipts, monthly gifts and preferences in one place.`, actions: '<a class="btn btn-donate" href="#/explore">Give again</a>' }) + pageBody(sub + body);
 }
 FORM.acctFilter = d => { const n = new URLSearchParams(); Object.entries(d).forEach(([k, v]) => v && n.set(k, v)); nav('#/account?' + n); };
 FORM.donorProfile = (d, f) => { if (!validate(f, [['name', v => v.length > 1, 'Enter your name'], ['email', isEmail, 'Enter a valid email']])) return; const u = user(); audit('Donor', u.id, 'Profile updated', u.email, d.email); Object.assign(u, { name: d.name.trim(), email: d.email.trim(), phone: d.phone, marketing: !!d.marketing, news: !!d.news }); toast('Changes saved'); render(); };
@@ -1234,7 +1852,7 @@ function denied(msg, cta = '') { return `<div class="panel" role="alert">${empty
 /* ===== supporter area P2P03-04 ===== */
 function viewSupporterArea(R) {
   const u = user();
-  const shell = inner => pub(`<div class="wrap section">${inner}</div>`);
+  const shell = (inner, head) => pub((head || pageHead({ kicker: 'Supporter fundraising', title: 'My fundraising' })) + pageBody(inner));
   if (!u) return shell(denied('Log in to manage your fundraising page.', '<a class="btn btn-primary" href="#/login">Log in</a>'));
   const mine = S.campaigns.filter(c => c.supporterId === u.id);
   const pid = R.parts[1] === 'page' ? R.parts[2] : null;
@@ -1243,13 +1861,13 @@ function viewSupporterArea(R) {
     if (!c || c.supporterId !== u.id) return shell(denied('This fundraising page belongs to someone else.', '<a class="btn btn-ghost" href="#/supporter">My pages</a>'));
     const parent = camp(c.parentId), o = org(c.orgId); const raised = raisedFor(c); const ds = paidDons().filter(d => d.childId === c.id).sort((a, b) => b.createdAt - a.createdAt);
     const parentLive = parent.status === 'active' && isPublicCamp(parent);
-    return shell(`<a class="btn-link small" href="#/supporter">My pages</a><div class="ptitle" style="margin-top:.6rem"><div><h1 style="font-size:2.2rem">${esc(c.title)}</h1><div class="muted">Fundraising for ${esc(parent.title)}. Funds go to ${esc(o.name)}.</div></div><div class="row">${badge(c.hidden ? 'suspended' : c.status, c.hidden ? 'Hidden by organisation' : '')}${c.status !== 'draft' ? `<a class="btn btn-ghost btn-sm" href="#/c/${c.slug}">View page</a>` : `<a class="btn btn-ghost btn-sm" href="#/c/${c.slug}">Preview</a>`}</div></div>
+    return shell(`
     <div class="kpis"><div class="kpi hl"><div class="v">${money(raised)}</div><div class="l">raised of ${money(c.target)}</div></div><div class="kpi"><div class="v">${ds.length}</div><div class="l">gifts</div></div><div class="kpi"><div class="v">${pct(raised, c.target)}%</div><div class="l">of your target</div></div><div class="kpi"><div class="v">${money(raisedFor(parent))}</div><div class="l">whole campaign total</div></div></div>
     <div class="two-col"><form class="panel" data-form="supPage" novalidate><input type="hidden" name="id" value="${c.id}"><h3>Your page</h3><label class="f">Page title<span class="hint">Up to 80 characters</span><input name="title" maxlength="80" value="${esc(c.title)}"></label><label class="f">Short summary<input name="summary" maxlength="160" value="${esc(c.summary)}"></label><label class="f">Your story<textarea name="story">${esc(c.story)}</textarea></label><label class="f">Your target (AUD)<input name="target" inputmode="numeric" value="${c.target / 100}"></label>
       <div class="row"><button class="btn btn-ghost" name="do" value="save">Save</button>${c.status === 'draft' ? `<button class="btn btn-primary" name="do" value="publish" ${!parentLive ? 'disabled title="The parent campaign is not live yet"' : ''}>Publish my page</button>` : `<button type="button" class="btn btn-ghost" data-act="share" data-title="${esc(c.title)}" data-url="#/c/${c.slug}">Share</button>`}</div>${!parentLive && c.status === 'draft' ? `<p class="small field-error">You can publish once ${esc(parent.title)} is live.</p>` : ''}</form>
-    <div class="panel"><h3>Gifts to your page</h3>${ds.length ? `<ul class="list-check">${ds.map(d => `<li><span>${esc(donorName(d, true))}<span class="small muted" style="display:block">${fmtD(d.createdAt)}${d.message ? '. “' + esc(d.message) + '”' : ''}</span></span><b>${money(d.base)}</b></li>`).join('')}</ul>` : empty('No gifts yet', 'Share your page to get the first one.')}<p class="tiny muted">You see public names only. Donor contact details stay with ACF and the organisation.</p></div></div>`);
+    <div class="panel"><h3>Gifts to your page</h3>${ds.length ? `<ul class="list-check">${ds.map(d => `<li><span>${esc(donorName(d, true))}<span class="small muted" style="display:block">${fmtD(d.createdAt)}${d.message ? '. “' + esc(d.message) + '”' : ''}</span></span><b>${money(d.base)}</b></li>`).join('')}</ul>` : empty('No gifts yet', 'Share your page to get the first one.')}<p class="tiny muted">You see public names only. Donor contact details stay with ACF and the organisation.</p></div></div>`, pageHead({ crumbs: [['#/supporter', 'My fundraising'], [null, c.title]], kicker: 'Supporter fundraising', title: esc(c.title), lede: `Fundraising for ${esc(parent.title)}. Every dollar goes to ${esc(o.name)}.`, actions: badge(c.hidden ? 'suspended' : c.status, c.hidden ? 'Hidden by organisation' : '') + `<a class="btn btn-ghost btn-sm" href="#/c/${c.slug}">${c.status !== 'draft' ? 'View page' : 'Preview'}</a>` }));
   }
-  return shell(`<h1 style="font-size:2.3rem">My fundraising</h1><p class="muted">Pages you run for organisations on ACF. You can edit your page, but payouts always go to the organisation.</p>${mine.length ? `<div class="cards">${mine.map(c => `<a class="card" href="#/supporter/page/${c.id}"><div class="cover">${coverSVG(c.id.length * 13 + c.id.charCodeAt(1) * 3 + 5, org(c.orgId).cause, 0, c.title)}</div><div class="body"><span>${badge(c.status)}</span><h4>${esc(c.title)}</h4><div class="progress"><i style="width:${pct(raisedFor(c), c.target)}%"></i></div><span class="small"><b>${money(raisedFor(c))}</b> of ${money(c.target)}</span></div></a>`).join('')}</div>` : `<div class="panel">${empty('No fundraising pages yet', 'Organisations invite supporters by email. Check the message centre for an invitation.')}</div>`}`);
+  return shell(`${mine.length ? `<div class="cards">${mine.map(c => `<a class="card" href="#/supporter/page/${c.id}"><div class="cover">${coverSVG(c.id.length * 13 + c.id.charCodeAt(1) * 3 + 5, org(c.orgId).cause, 0, c.title)}</div><div class="body"><span>${badge(c.status)}</span><h4>${esc(c.title)}</h4><div class="progress"><i style="width:${pct(raisedFor(c), c.target)}%"></i></div><span class="small"><b>${money(raisedFor(c))}</b> of ${money(c.target)}</span></div></a>`).join('')}</div>` : `<div class="panel">${empty('No fundraising pages yet', 'Organisations invite supporters by email. Check the message centre for an invitation.')}</div>`}`, pageHead({ kicker: 'Supporter fundraising', title: 'My fundraising', lede: 'Pages you run for organisations on ACF. You can edit your page, but payouts always go to the organisation.' }));
 }
 FORM.supPage = (d, f, e) => {
   const c = camp(d.id); const action = e.submitter?.value || 'save';
@@ -1301,7 +1919,7 @@ const recordGuard = (rec, o) => !rec ? empty('Record not found', 'It may have be
 
 /* ===== ORG02 create org ===== */
 function vCreateOrg(u) {
-  return `<div class="wrap section" style="max-width:760px">${!u.emailVerified ? `<div class="callout">Verify your email first. <button class="btn-link" data-act="mailbox">Open the message centre</button></div>` : ''}<h1 style="font-size:2.3rem">Tell us about your organisation</h1><p class="muted">Step 2 of registration. You can save and come back to the rest of the checklist.</p>${orgDetailsForm({}, 'createOrg')}</div>`;
+  return pageHead({ kicker: 'Register your organisation', title: 'Tell us about your organisation', lede: 'Step 2 of registration. You can save and come back to the rest of the checklist.' }) + pageBody(`${!u.emailVerified ? `<div class="callout" style="margin-top:0">Verify your email first. <button class="btn-link" data-act="mailbox">Open the message centre</button></div>` : ''}${orgDetailsForm({}, 'createOrg')}`, true);
 }
 function orgDetailsForm(o, formName) {
   return `<form class="panel" data-form="${formName}" novalidate><div class="grid2"><label class="f">Legal name<input name="legal" value="${esc(o.legal || '')}"></label><label class="f">Public name<span class="hint">Shown on your page</span><input name="name" value="${esc(o.name || '')}"></label></div>
